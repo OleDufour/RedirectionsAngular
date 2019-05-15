@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Constant\" />
+    <Folder Include="Screenshots\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
