@@ -1,12 +1,13 @@
 .page-sidebar {
-  height: auto;
-  width: 260px;
-  position: fixed;
-  padding: 0px; 
+ 
+ 
+ 
+ 
+ 
  
   border: 1px;
   margin-top: 60px;
-  overflow: hidden;
+ 
   box-shadow: 0 0 10px 0 rgba(33, 33, 33, .2);
   -webkit-box-shadow: 0 0 10px 0 rgba(33, 33, 33, .2);
   -moz-box-shadow: 0 0 10px 0 rgba(33, 33, 33, .2);
@@ -15,6 +16,10 @@
   min-height: 100%;
   height: auto;
   position: fixed!important;
+
+
+
+
 }
 ul, menu, dir {
     display: block;

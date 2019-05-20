@@ -1,13 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ControlModule } from './controls/controls.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AddComponent } from './add/add.component';
-import { SearchComponent } from './search/search.component';
-import { MenuComponent } from './menu/menu.component';
-import { PublishComponent } from './publish/publish.component';
-
+import { AddComponent } from './pages/add/add.component';
+import { SearchComponent } from './pages/search/search.component';
+import { MenuComponent } from './pages/add/menu/menu.component';
+import { PublishComponent } from './pages/publish/publish.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +16,12 @@ import { PublishComponent } from './publish/publish.component';
     SearchComponent,
     MenuComponent,
     PublishComponent,
- 
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ControlModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
