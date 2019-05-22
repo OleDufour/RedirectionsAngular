@@ -1,24 +1,41 @@
-<div>
-  <form>
+ <form [formGroup]="form2" (ngSubmit)="submit()">
+   <div class="form-group">
+     <label for="domain">Domain</label>
+     <select id="domain" class="form-control">
+       <option *ngFor="let idValue of domains" [value]="idValue.id">{{idValue.name}}</option>
+     </select>
+   </div>
+   <div class="form-group">
+     <label for="sourceType">Type de Source</label>
+     <select id="sourceType" class="form-control" formControlname="sourceType">
+       <option *ngFor="let idValue of  sourceTypes" [value]="idValue.id">{{idValue.name}}</option>
+     </select>
+     <div *ngIf="form2.controls.sourceType.touched" class="alert alert-danger">Source Type is required</div>
+   </div>
+   <div class="form-group">
+     <label for="source">Source</label>
+     <input id="source" name="source" class="form-control" type="text" formControlname="source" />
+     <div *ngIf="form2.controls.source.touched && form2.controls.source.errors.required" class="alert alert-danger">Source is required</div>
+   </div>
 
 
-    <div class="form-group">
-    
-        <ctrl-dropdown collectionName='EnumDomain' label='Domaine' ></ctrl-dropdown>
-    
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-        placeholder="Enter email">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+   rr {{form2.controls.source.required}}
+   <!-- <ctrl-dropdown label='Domaine' collectionName='EnumDomain' fcn="domain" ></ctrl-dropdown>
+    <div *ngIf="form.controls.domain.touched && !form.controls.domain.valid" class="alert alert-danger">Username is required</div>
+    <!-- <div class="form-group">
+        <label for="inpSource">Source</label>
+      <input class="form-control" id="inpSource" aria-describedby="Source">
     </div>
     <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <label for="inpSource">Target</label>
+      <ctrl-dropdown collectionName='TargetType' label='Target type'></ctrl-dropdown>
     </div>
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-</div>
+    <div class="form-group">
+        <label for="inpSource">Target</label>
+      <input class="form-control" id="inpSource" aria-describedby="Source">
+    </div> -->
+
+
+
+   <button type="submit" class="btn btn-primary">Submit</button>
+ </form>

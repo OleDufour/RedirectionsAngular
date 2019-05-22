@@ -17,10 +17,18 @@
    </ul>
  </div> -->
 
-<label for="domaine">{{label}}</label>
- <select id="domaine" class="form-control">
+<!-- <label for="domaine">{{label}}</label> -->
+ <!-- <select id="domaine" class="form-control">
    <option *ngFor="let symbol of keys(values)" [value]="values[symbol]">{{symbol}}</option>
- </select>
-
-
+ </select> -->
+<!-- 
+ <select id="domain" class="form-control" formControlName="fcn">
+  <option *ngFor="let idValue of idsValues" [value]="idValue.id">{{idValue.name}}</option>
+</select> -->
+<div class="form-group">
+    <label for="domain">Domaine</label>
+    <select id="domain" class="form-control">
+        <option *ngFor="let idValue of idsValues" [value]="idValue.id">{{idValue.name}}</option>
+      </select>
+  </div>
  
