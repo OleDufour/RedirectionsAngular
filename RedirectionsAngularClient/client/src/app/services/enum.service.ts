@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { EnumDomain } from '../../const/EnumDomain';
-import { EnumSourceType, EnumTargetType  } from '../../const/EnumSourceTypeTargetType';
+import { EnumDomain } from '../const/EnumDomain';
+import { EnumSourceType, EnumTargetType  } from '../const/EnumSourceTypeTargetType';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AddService {
+export class EnumService {
 
   constructor() { 
 

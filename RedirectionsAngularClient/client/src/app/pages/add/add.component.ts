@@ -1,56 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-//import { DropdownComponent } from '../../controls/dropdown/dropdown.component';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { AddService } from './add.service'
-
+import { Component } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+//import { AddService } from './add.service';
+import {EnumService} from '../../services/enum.service';
+ 
 @Component({
-  selector: 'app-add',
-  templateUrl: './add.component.html',
-  styleUrls: ['./add.component.css']
-})
-export class AddComponent implements OnInit {
-  public form2: FormGroup;
+  selector: 'app-root',
+  templateUrl: './add.component.html'
 
+})
+export class AddComponent {
+
+  addform: FormGroup;
   public domains: { id: number; name: string }[] = [];
   public sourceTypes: { id: number; name: string }[] = [];
-
-source= new FormControl();
-
-  constructor(a: AddService, fb: FormBuilder) {
-    // this.domains = a.getEnumDomain();
-    // this.sourceTypes = a.getEnumSourceType();
-    // var empty = { id: -1, name: '' };
-    // this.sourceTypes.unshift(empty);
+  public targetTypes: { id: number; name: string }[] = [];
 
 
-    this.form2 = fb.group({
-      sourceType: ['', Validators.required]
-      , source: ['', Validators.required]
+  constructor(a: EnumService, private fb: FormBuilder) {
+    this.createForm();
+    this.domains = a.getEnumDomain();
+    this.sourceTypes = a.getEnumSourceType();
+    var empty = { id: -1, name: '' };
+    this.sourceTypes.unshift(empty);
+    this.targetTypes = a.getEnumTargetType();
+  }
+
+  createForm() {
+    this.addform = this.fb.group({
+      source: ['', Validators.required]
     });
-
-
   }
 
   submit() {
-
-    console.log(this.form2.value);
-
-  }
-
-  myValidator(group: FormGroup) {
-    let sum = 0;
-    for (let a in group.controls) {
-      sum += group.get([a]).value;
-      console.log('myValidator', group.get([a]).value);
-
-
-    }
-    //  return sum > 10 ? { notValid: true} : null
-  }
-
-
-
-  ngOnInit() {
+    console.log(this.addform.value);
   }
 
 }

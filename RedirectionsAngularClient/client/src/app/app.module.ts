@@ -1,11 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ControlModule } from './controls/controls.module';
+
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+ import { ControlModule } from './controls/controls.module';
+  import {ServiceModule} from './services/services.module';
 
 
-import { AddService } from './pages/add/add.service';
+ //import { AddService } from './pages/add/add.service';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +16,7 @@ import { AddComponent } from './pages/add/add.component';
 import { SearchComponent } from './pages/search/search.component';
 import { MenuComponent } from './pages/add/menu/menu.component';
 import { PublishComponent } from './pages/publish/publish.component';
+ 
 
 
 
@@ -23,18 +26,16 @@ import { PublishComponent } from './pages/publish/publish.component';
     AddComponent,
     SearchComponent,
     MenuComponent,
-    PublishComponent,
-
+    PublishComponent 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ControlModule,
-    FormsModule,
+    ServiceModule,
     ReactiveFormsModule,
-
+    ControlModule
   ],
-  providers: [AddService],
+  providers: [   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
