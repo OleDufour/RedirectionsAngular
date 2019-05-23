@@ -1,25 +1,30 @@
 import { Injectable } from '@angular/core';
 import { EnumDomain } from '../const/EnumDomain';
-import { EnumSourceType, EnumTargetType  } from '../const/EnumSourceTypeTargetType';
+import { EnumSourceType, EnumTargetType } from '../const/EnumSourceTypeTargetType';
+import { EnumRedirectionType } from '../const/EnumRedirectionType';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EnumService {
 
-  constructor() { 
+  constructor() {
 
   }
 
-  public getEnumDomain(){
+  public getEnumDomain() {
     return new EnumDomain().GetArray();
   }
-  public getEnumSourceType(){
+  public getEnumSourceType() {
     return new EnumSourceType().GetArray();
   }
 
-  public getEnumTargetType(){
+  public getEnumTargetType() {
     return new EnumTargetType().GetArray();
+  }
+
+  public getRedirectionTypes() {
+    return new EnumRedirectionType().GetArray();
   }
 
 }

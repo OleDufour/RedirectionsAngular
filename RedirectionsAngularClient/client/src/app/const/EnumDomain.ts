@@ -11,11 +11,6 @@ export enum enumDomain {
 }
 export class EnumDomain extends Enum {
     GetArray(): { id: number; name: string }[] {
-     
-        var test = (super.SortByNameAndConvertToArray(enumDomain, false)) ;
-
-       // test.unshift(empty);
-
-        return test;
+        return (super.SortByNameAndConvertToArray(enumDomain, false));
     }
 }
