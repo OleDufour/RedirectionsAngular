@@ -27,21 +27,22 @@ namespace RedirectionsAngular.Controllers
         }
 
         // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
+        //[HttpPost]
+        //public void Post([FromBody] string value)
 
 
-        {
-        }
+        //{
+        //}
 
         // PUT api/values/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)     {            
         }
 
-       
-        public IActionResult AddOrEdit(RedirectModel redirect)
+        [HttpPost]       
+        public IActionResult Post( )//RedirectModel redirect
         {
+            RedirectModel redirect=null;
             if (ModelState.IsValid)
             {
                 try

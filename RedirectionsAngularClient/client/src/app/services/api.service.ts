@@ -13,7 +13,7 @@ export class ApiService {
 
     public AddOrEdit(rm: RedirectModel): string {
         console.log('00000000000',rm);
-        this.httpClient.put(apiUrl, rm)
+        this.httpClient.post(apiUrl+'', '')
             .subscribe(
                 data => {
                     console.log("PUT Request is successful ", data);
