@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Cors;
 namespace RedirectionsAngular.Controllers
 {
     [EnableCors("AllowMyOrigin")]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class ValuesController : ControllerBase
     {
@@ -40,62 +40,62 @@ namespace RedirectionsAngular.Controllers
         }
 
         [HttpPost]       
-        public IActionResult Post( )//RedirectModel redirect
+        public IActionResult AddOrEdit( RedirectModel redirect)//[FromBody] 
         {
-            RedirectModel redirect=null;
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    // Update
-                    if (redirect.RedirectId.HasValue && redirect.RedirectId.Value > 0)
-                    {
-                        try
-                        {
-                            RedirectModelList.RedirectList.Add(redirect);
-                        }
-                        catch (Exception e)
-                        {
-                            return  Ok(new ResultModel
-                            {
-                                Success = false,
-                                Message = e.Message,
-                                Data = null
-                            });
-                        }
+              redirect =null;
+            //if (ModelState.IsValid)
+            //{
+            //    try
+            //    {
+            //        // Update
+            //        if (redirect.RedirectId.HasValue && redirect.RedirectId.Value > 0)
+            //        {
+            //            try
+            //            {
+            //                RedirectModelList.RedirectList.Add(redirect);
+            //            }
+            //            catch (Exception e)
+            //            {
+            //                return  Ok(new ResultModel
+            //                {
+            //                    Success = false,
+            //                    Message = e.Message,
+            //                    Data = null
+            //                });
+            //            }
 
-                        // Element exist but has been deleted.
-                        return Ok(new   ResultModel
-                        {
-                            Success = false,
-                            Message = "RedirectResources.app_already_deleted",
-                            Data = new { IsDeleted = true }
-                        });
-                    }
-
-
-                    if (redirect.RedirectId.HasValue && redirect.RedirectId.Value > 0)
-                    {
-                        RedirectModelList.UpdateRedirectList(redirect);
-                    }
-
-                    return Ok(new ResultModel
-                    {
-                        Success = false,
-                        Message = "app_add_error"
-                    });
-                }
+            //            // Element exist but has been deleted.
+            //            return Ok(new   ResultModel
+            //            {
+            //                Success = false,
+            //                Message = "RedirectResources.app_already_deleted",
+            //                Data = new { IsDeleted = true }
+            //            });
+            //        }
 
 
-                catch (Exception exception)
-                {
-                    return Ok(new ResultModel
-                    {
-                        Success = false,
-                        Message = $"{".app_errors_list"} :<br/> + {exception.Message}"
-                    });
-                }
-            }
+            //        if (redirect.RedirectId.HasValue && redirect.RedirectId.Value > 0)
+            //        {
+            //            RedirectModelList.UpdateRedirectList(redirect);
+            //        }
+
+            //        return Ok(new ResultModel
+            //        {
+            //            Success = false,
+            //            Message = "app_add_error"
+            //        });
+            //    }
+
+
+            //    catch (Exception exception)
+            //    {
+            //        return Ok(new ResultModel
+            //        {
+            //            Success = false,
+            //            Message = $"{".app_errors_list"} :<br/> + {exception.Message}"
+            //        });
+            //    }
+            //}
 
             return Ok(new ResultModel
             {
