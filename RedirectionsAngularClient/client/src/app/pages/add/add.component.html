@@ -12,28 +12,24 @@
       </select>
     </div>
     <div class="form-group">
-      <label for="sourceTypes">Type de source</label>
-      <select id="sourceTypes" class="form-control" formControlName="sourceTypes">
+      <label for="sourceType">Type de source</label>
+      <select id="sourceType" class="form-control" formControlName="sourceType">
         <option *ngFor="let idValue of sourceTypes" [value]="idValue.id">{{idValue.name}}</option>
       </select>
     </div>
     <div class="form-group">
       <label for="source">Source</label>
-      <input id="source" class="form-control" formControlName="source">
+      <input id="source" class="form-control" formControlName="source" value=''>
       <div *ngIf="formDir.submitted && addform.controls['source'].errors?.required" class="alert alert-danger">
-          required !! 
-          </div>
+        required !!
+      </div>
       <div *ngIf="formDir.submitted && addform.controls['source'].errors?.minlength" class="alert alert-danger">
-        minlength !! 
-        </div>
-<!-- <div *ngIf="formDir.submitted && addform.controls['source'].invalid" class="alert alert-danger">
-        <div *ngIf="addform.controls['source'].errors.required">Source is required.</div>
-      </div> -->
-
+        minlength !!
+      </div>
     </div>
     <div class="form-group">
-      <label for="targetTypes">Type de target</label>
-      <select id="targetTypes" class="form-control" formControlName="targetTypes">
+      <label for="targetType">Type de target</label>
+      <select id="targetType" class="form-control" formControlName="targetType">
         <option *ngFor="let idValue of targetTypes" [value]="idValue.id">{{idValue.name}}</option>
       </select>
     </div>
@@ -49,8 +45,8 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="redirectionTypes">Type de redirection</label>
-      <select id="redirectionTypes" class="form-control" formControlName="redirectionTypes">
+      <label for="redirectionType">Type de redirection</label>
+      <select id="redirectionType" class="form-control" formControlName="redirectionType">
         <option *ngFor="let idValue of redirectionTypes" [value]="idValue.id">{{idValue.name}}</option>
       </select>
     </div>
@@ -59,7 +55,7 @@
       {{addform.errors['circularDep'] }}
 
     </div>
-    <button type="submit" class="btn btn-primary" >Submit</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
   <p>Form value: {{ addform.value | json }}</p>
   <p>Form status: {{ addform.status | json }}</p>

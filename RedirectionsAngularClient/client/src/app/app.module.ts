@@ -5,7 +5,7 @@ import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 
  import { ControlModule } from './controls/controls.module';
   import {ServiceModule} from './services/services.module';
-
+  import { HttpClientModule } from '@angular/common/http';
 
  //import { AddService } from './pages/add/add.service';
 
@@ -33,7 +33,8 @@ import { PublishComponent } from './pages/publish/publish.component';
     AppRoutingModule,
     ServiceModule,
     ReactiveFormsModule,
-    ControlModule
+    ControlModule,
+    HttpClientModule
   ],
   providers: [   ],
   bootstrap: [AppComponent]
