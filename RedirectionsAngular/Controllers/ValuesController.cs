@@ -42,7 +42,33 @@ namespace RedirectionsAngular.Controllers
         [HttpPost]       
         public IActionResult AddOrEdit( RedirectModel redirect)//[FromBody] 
         {
-              redirect =null;
+
+            // OK
+            if (redirect.DomainId==EnumDomain.FR_FR)
+            return Ok(new ResultModel
+            {
+                Success = true,
+                Message = "insert sucessful",
+                Data = new { RedirectId = 123 }
+            });
+
+            if (redirect.RedirectId==null)
+            return Ok(new ResultModel
+            {
+                Success = true,
+                Message = "insert voor "+ redirect.DomainId.ToString(),
+                Data = new { RedirectId = 123 }
+            });
+            if (redirect.RedirectId.HasValue)
+                return Ok(new ResultModel
+                {
+                    Success = true,
+                    Message = "update voor " + redirect.DomainId.ToString()+ " succes voll" ,
+                    Data = new { RedirectId = 123 }
+                });
+
+
+            redirect = null;
             //if (ModelState.IsValid)
             //{
             //    try

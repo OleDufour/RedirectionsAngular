@@ -4,7 +4,7 @@
 export interface RedirectModel {
 
     RedirectId: number,
-    DomainId, number,
+    DomainId: number,
     SourceType: number,
     Source: string,
     TargetType: number,

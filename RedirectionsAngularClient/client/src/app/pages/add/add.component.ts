@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EnumService } from '../../services/enum.service';
 import { ApiService } from '../../services/api.service';
 import { RedirectModel } from '../../interfaces/redirectModel';
+import { ApiReturnModel } from 'src/app/interfaces/apiReturnData';
 @Component({
   selector: 'app-root',
   templateUrl: './add.component.html'
@@ -16,24 +17,23 @@ export class AddComponent {
   public sourceTypes: { id: number; name: string }[] = [];
   public targetTypes: { id: number; name: string }[] = [];
   public redirectionTypes: { id: number; name: string }[] = [];
-  public submitting: boolean = false;
-  //_apiService: ApiService;
+  //public submitting: boolean = false;
+  public editUpdateResult: ApiReturnModel;
 
-  constructor(a: EnumService, private apiService: ApiService, private fb: FormBuilder) {
+  constructor(enumService: EnumService, private apiService: ApiService, private fb: FormBuilder) {
     this.createForm();
 
-    this.domains = a.getEnumDomain();
-    this.sourceTypes = a.getEnumSourceType();
-    var empty = { id: -1, name: '' };
-    this.sourceTypes.unshift(empty);
-    this.targetTypes = a.getEnumTargetType();
-    this.redirectionTypes = a.getRedirectionTypes();
-
-    //this._apiService = apiService;
+    this.domains = enumService.getEnumDomain();
+    this.sourceTypes = enumService.getEnumSourceType();
+    this.targetTypes = enumService.getEnumTargetType();
+    this.redirectionTypes = enumService.getRedirectionTypes();
+    this.addform.controls['domainId'].setValue(1, { onlySelf: true });
   }
 
   createForm() {
     this.addform = this.fb.group({
+      redirectId: [''],
+      domainId: [''],  // pas de validation, mais c'est pour inclure dans le modèle.
       sourceType: ['', Validators.required],
       source: ['', [Validators.required, Validators.minLength(2)]],
       targetType: ['', Validators.required],
@@ -45,17 +45,12 @@ export class AddComponent {
 
   CompareSourceTarget = (group: FormGroup) => {
     if (group.pristine) {
-      console.log('pristine !')
       return null;
     }
-    // for (let a in group.controls) {
-    // console.log('myValidator', group.get([a]).value);
-    // }
+    // for (let a in group.controls) {console.log('myValidator', group.get([a]).value);   }
 
     let sourceTypeVal: any = group.controls['sourceType'].value;
     let sourceVal: string = group.controls['source'].value;
-    //TypeError: Cannot read property 'value' of undefined
-
     let targetTypeVal = group.controls['targetType'].value;
     let targetVal = group.controls['target'].value;
 
@@ -69,10 +64,25 @@ export class AddComponent {
   }
 
 
-  submit(rm: RedirectModel) {
+  submit = () => {
     console.log('this. addform.value', this.addform.value);
-    this.submitting = true;
-    this.apiService.AddOrEdit(this.addform.value);
+
+    if (this.addform.status === 'VALID')
+      this.apiService.AddOrEdit(this.addform.value).subscribe(
+        (response: ApiReturnModel) => {
+          console.log("PUT Request is successful ", response);
+          this.editUpdateResult = response;
+          console.log('222222222222222222', this.editUpdateResult);
+          console.log('3333333333333', this.editUpdateResult.data.redirectId);
+          this.addform.controls['redirectId'].setValue(this.editUpdateResult.data.redirectId);
+      
+        },
+        error => {
+          console.log("Error", error);
+          return error;
+        }
+      );
+    console.log('111111111111111111111111', this.editUpdateResult)
   }
 
 
