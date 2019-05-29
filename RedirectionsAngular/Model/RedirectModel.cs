@@ -70,7 +70,7 @@ public class RedirectModel
 
     //public string ModificationUser { get; set; }
 
-    //public DateTime? DeletionDate { get; set; }
+     public DateTime? DeletionDate { get; set; }
     //public string DeletionUser { get; set; }
 
     ///// <summary>
@@ -116,4 +116,33 @@ public class ResultModel
     public string Message { get; set; }
 
     public dynamic Data { get; set; }
+}
+
+
+public class RedirectPaging : RedirectModel
+{
+    /// <summary>
+    /// Number of redirects to display when paging
+    /// </summary>
+    public int PageSize { get; set; }
+    public int PageNo { get; set; }
+
+    public string OrderByColumn { get; set; }
+    public string AscOrDesc { get; set; }
+
+    public bool IncludeDeletions { get; set; }
+}
+
+public class DataTablesReturnData<T>
+{
+    [JsonProperty(PropertyName = "draw")]
+    public int Draw { get; set; }
+    [JsonProperty(PropertyName = "recordsTotal")]
+    public int RecordsTotal { get; set; }
+    [JsonProperty(PropertyName = "recordsFiltered")]
+    public int RecordsFiltered { get; set; }
+    [JsonProperty(PropertyName = "data")]
+    public IEnumerable<T> Data { get; set; }
+    [JsonProperty(PropertyName = "error")]
+    public string Error { get; set; }
 }

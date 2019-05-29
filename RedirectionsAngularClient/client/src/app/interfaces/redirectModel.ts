@@ -1,8 +1,5 @@
  
- 
-
 export interface RedirectModel {
-
     RedirectId: number,
     DomainId: number,
     SourceType: number,

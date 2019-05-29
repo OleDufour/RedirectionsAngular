@@ -74,8 +74,7 @@ export class AddComponent {
           this.editUpdateResult = response;
           console.log('222222222222222222', this.editUpdateResult);
           console.log('3333333333333', this.editUpdateResult.data.redirectId);
-          this.addform.controls['redirectId'].setValue(this.editUpdateResult.data.redirectId);
-      
+          this.addform.controls['redirectId'].setValue(this.editUpdateResult.data.redirectId);      
         },
         error => {
           console.log("Error", error);
