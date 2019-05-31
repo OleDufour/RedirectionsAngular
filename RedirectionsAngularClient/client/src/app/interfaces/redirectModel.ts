@@ -1,10 +1,13 @@
- 
-export interface RedirectModel {
-    RedirectId: number,
-    DomainId: number,
-    SourceType: number,
-    Source: string,
-    TargetType: number,
-    Target: string,
-    RedirectType:number
+
+export class RedirectModel {
+    redirectId: number
+    domainId: number
+    sourceType: number
+    sourceTypeString: string
+    source: string 
+    target: string
+    targetType: number
+    targetTypeString: string
+    redirectTypeString:string
+    redirectType: number
 }

@@ -26,9 +26,9 @@ public class RedirectModel
     public EnumSourceTypeTargetType? SourceType { get; set; }
 
     ///// <summary>
-    ///// Uniquement utilisé pour l'affichage dans wwwroot/content/js/areas/index.js
+     // Uniquement utilisé pour l'affichage  
     ///// </summary>
-    //public string SourceTypeString => SourceType?.ToString();
+     public string SourceTypeString => SourceType?.ToString();
 
 
     //[Required]
@@ -41,9 +41,9 @@ public class RedirectModel
     public EnumSourceTypeTargetType? TargetType { get; set; }
 
     ///// <summary>
-    ///// Utilisé pour l'affichage sur les pages .cshtml
+    // Utilisé pour l'affichage  
     ///// </summary>
-    //public string TargetTypeString => TargetType?.ToString();
+    public string TargetTypeString => TargetType?.ToString();
 
 
     //[Required]
@@ -57,10 +57,9 @@ public class RedirectModel
     [JsonProperty(PropertyName = "redirectionType")]
     public EnumRedirectType? RedirectType { get; set; }
 
-    ///// <summary>
-    ///// Uniquement utilisé pour l'affichage dans wwwroot/content/js/areas/index.js
-    ///// </summary>
-    //public string RedirectTypeString => RedirectType?.ToString();
+   
+    ///// Uniquement utilisé pour l'affichage 
+    public string RedirectTypeString => RedirectType?.ToString();
 
     //public DateTime CreationDate { get; set; }
 

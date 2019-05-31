@@ -57,36 +57,53 @@
      <!-- -->
      <p>Form value: {{ form.value | json }}</p>
      <p>Form status: {{ form.status | json }}</p>
-   
+
 
    </div>
 
  </form>
 
-todo, 
-<h4> https://github.com/angular-university/angular-material-course/blob/2-data-table-finished/src/app/services/lessons.datasource.ts
-  </h4>
+
+ <div class="course">
+
  <mat-table class="lessons-table mat-elevation-z8" [dataSource]="dataSource">
-  
-    <ng-container matColumnDef="seqNo">
-        <div *matHeaderCellDef>#</div>
-        <div *matCellDef="let lesson">{{lesson.seqNo}}</div>
+
+   <ng-container matColumnDef="redirectId">
+     <div *matHeaderCellDef>#</div>
+     <div *matCellDef="let redirectionModel">{{redirectionModel.redirectId}}</div>
+   </ng-container>
+   
+   <ng-container matColumnDef="sourceTypeString">
+     <div *matHeaderCellDef>sourceTypeString</div>
+     <div *matCellDef="let redirectionModel">&nbsp;&nbsp;&nbsp;{{redirectionModel.sourceTypeString}}</div>
+   </ng-container>
+   <ng-container matColumnDef="source">
+     <div *matHeaderCellDef>source</div>
+     <div *matCellDef="let redirectionModel">&nbsp;&nbsp;&nbsp;{{redirectionModel.source}}</div>
+   </ng-container>
+
+
+   <ng-container matColumnDef="targetTypeString">
+      <div *matHeaderCellDef>targetTypeString</div>
+      <div *matCellDef="let redirectionModel">&nbsp;&nbsp;&nbsp;{{redirectionModel.targetTypeString}}</div>
     </ng-container>
-  
-    <ng-container matColumnDef="description">
-        <div *matHeaderCellDef>Description</div>
-        <div class="description-cell"
-                  *matCellDef="let lesson">{{lesson.description}}</div>
+
+    <ng-container matColumnDef="target">
+        <div *matHeaderCellDef>target</div>
+        <div *matCellDef="let redirectionModel">&nbsp;&nbsp;&nbsp;{{redirectionModel.target}}</div>
+      </ng-container>
+
+    <ng-container matColumnDef="redirectTypeString">
+      <div *matHeaderCellDef>redirectTypeString</div>
+      <div *matCellDef="let redirectionModel">&nbsp;&nbsp;&nbsp;{{redirectionModel.redirectTypeString}}</div>
     </ng-container>
-  
-    <ng-container matColumnDef="duration">
-        <div *matHeaderCellDef>Duration</div>
-        <div class="duration-cell"
-                  *matCellDef="let lesson">{{lesson.duration}}</div>
-    </ng-container>
-    
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    
-    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-    
-</mat-table>
+
+ 
+
+
+   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+   <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+ </mat-table>
+</div>

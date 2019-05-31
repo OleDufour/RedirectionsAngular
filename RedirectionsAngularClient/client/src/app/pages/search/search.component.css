@@ -1,0 +1,20 @@
+
+
+.course {
+     
+  
+    margin: 0 auto;
+}
+
+
+.lessons-table {
+    min-height: 360px;
+    margin-top: 10px;
+}
+
+mat-row{
+border-color: lightgray;
+border-left-width: 1px;
+border-right-width: 1px;
+ 
+}

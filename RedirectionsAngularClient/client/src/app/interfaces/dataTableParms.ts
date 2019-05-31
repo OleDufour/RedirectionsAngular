@@ -1,12 +1,11 @@
 import { RedirectModel } from './redirectModel';
 
-export interface DataTableParms {
-    columns: RedirectModel[],
-    start: number,
-    length: number,
-    searchValue: string,
-    domainId: number,
+export class DataTableParms {
+    redirectModel: RedirectModel
+    pageNo: number
+    pageSize: number
+    // searchValue: string,
+
     includeDeletions: boolean
 }
 
- 

@@ -10,18 +10,24 @@ namespace RedirectionsAngular.Model
 
     public class DataTablesParameters
     {
-        public int Draw { get; set; }
-        public int Start { get; set; }
-        public int Length { get; set; }
-        public int DomainId { get; set; }
-        public string SearchValue { get; set; }
-        public List<ColumnParameters> Columns { get; set; }
-        public List<OrderParameters> Order { get; set; }
+        public RedirectModel RedirectModel { get; set; }
 
-        /// <summary>
-        /// If true we add deleted elements.
-        /// </summary>
-        public bool IncludeDeletions { get; set; }
+        //public int Draw { get; set; }
+        public int PageNo { get; set; }
+        public int PageSize { get; set; }
+
+        public string OrderByColumn { get; set; }
+
+        public string AscOrDesc { get; set; }
+
+        //public string SearchValue { get; set; }
+        //public List<ColumnParameters> Columns { get; set; }
+        //public List<OrderParameters> Order { get; set; }
+
+        ///// <summary>
+        ///// If true we add deleted elements.
+        ///// </summary>
+        //public bool IncludeDeletions { get; set; }
     }
 
     public class ColumnParameters
@@ -44,4 +50,4 @@ namespace RedirectionsAngular.Model
         public string Value { get; set; }
     }
 
-    }
+}
