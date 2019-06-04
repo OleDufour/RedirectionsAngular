@@ -1,29 +1,22 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { MatPaginator, MatSort, MatTableDataSource } from "@angular/material";
-
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, startWith, tap, delay } from 'rxjs/operators';
+import { MatPaginator, MatSort } from "@angular/material";
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { tap} from 'rxjs/operators';
 import { merge } from 'rxjs'
-import { fromEvent } from 'rxjs';
-import { Observable } from 'rxjs';
-
 import { EnumService } from '../../services/enum.service';
 import { ApiService } from '../../services/api.service';
 import { RedirectModel } from '../../interfaces/redirectModel';
-import { ApiReturnInfo } from 'src/app/interfaces/apiReturnInfo';
 import { SearchDataSource } from './../../services/search.datasource';
-
 import { ApiParmData } from '../../interfaces/apiParmData';
-import { DataSource } from '@angular/cdk/table';
 import { ApiReturnData } from 'src/app/interfaces/apiReturnData';
-
 
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styleUrls: ['./search.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchComponent implements OnInit {
   form: FormGroup;
@@ -34,21 +27,16 @@ export class SearchComponent implements OnInit {
 
   dtp: ApiParmData;
 
-  public  result : ApiReturnData<RedirectModel>;
-
+  public result: ApiReturnData<RedirectModel>;
   public dataSource: SearchDataSource;
-//  displayedColumns = ["redirectId", "sourceType", "source", "targetType", "target"];
-//  displayedColumns = ["redirectId",  "sourceTypeString","source",   "targetTypeString" ,"target","redirectionTypeString" ];
- 
-  displayedColumns = ["redirectId",    "sourceTypeString",  "source",  "target",    "targetTypeString",  "redirectTypeString" ];
+  public p: number = 2;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild('input') input: ElementRef;
+  displayedColumns = ["redirectId", "sourceTypeString", "source", "target", "targetTypeString", "redirectTypeString"];
+
   redirectModel: RedirectModel;
- 
 
-  constructor(enumService: EnumService, private apiService: ApiService, private fb: FormBuilder, private route: ActivatedRoute  ) {
+
+  constructor(enumService: EnumService, private apiService: ApiService, private fb: FormBuilder, private route: ActivatedRoute) {
     this.createForm();
 
     this.domains = enumService.getEnumDomain();
@@ -70,56 +58,32 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  async ngOnInit() {
+  ngOnInit() {
     this.redirectModel = this.form.value;//this.route.snapshot.data["course"];
 
-
-    this.dtp = new  ApiParmData();
-    this.dtp.pageNo=1;
-    this.dtp.pageSize=20;
-    this.dtp.redirectModel= new RedirectModel(); 
-    
-    this.dtp.redirectModel.domainId =1;// this.form.value;
-   console.log('999999',this.dtp)
-
-    this.dataSource = new SearchDataSource(this.apiService) ;
-    this.result = await this.dataSource.loadLessonsNEW(this.dtp);
-
-    console.log('¤¤¤¤¤¤¤¤¤¤¤¤¤', this.result)
+    this.dtp = new ApiParmData();
+    this.dtp.pageNo = 1;
+    this.dtp.pageSize = 20;
+    this.dtp.redirectModel = new RedirectModel();
+    this.dtp.redirectModel.domainId = 1;
+    this.dataSource = new SearchDataSource(this.apiService);
+    this.dataSource.loadLessonsNEW(this.dtp);
+    this.getPage(1);
   }
 
-  ngAfterViewInit() {
-    // this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
-    // fromEvent(this.input.nativeElement, 'keyup')
-    //   .pipe(
-    //     debounceTime(150),
-    //     distinctUntilChanged(),
-    //     tap(() => {
-    //       this.paginator.pageIndex = 0;
-
-    //       this.loadLessonsPage();
-    //     })
-    //   )
-    //   .subscribe();
-
-    // merge(this.sort.sortChange, this.paginator.page)
-    //   .pipe(
-    //     tap(() => this.loadLessonsPage())
-    //   )
-    //   .subscribe();
-
+  getPage(event: any) {
+   // console.log(this.dataSource?.bsApiReturnData.value.recordsTotal );
+   console.log('event', event); 
+   this.p = event;
+    this.dtp.pageNo = event;
+    this.dataSource = new SearchDataSource(this.apiService);
+    this.dataSource.loadLessonsNEW(this.dtp);
   }
 
-  // loadLessonsPage() {
-  //   this.dataSource.loadLessonsNEW(
-  //     this.redirectModel.redirectId,
-  //     this.input.nativeElement.value,
-  //     this.sort.direction,
-  //     this.paginator.pageIndex,
-  //     this.paginator.pageSize);
-  // }
-
-
+  selectNbItembyPage (event: any, deviceValue){
+    console.log(deviceValue);
+    this.dtp.pageSize = deviceValue;
+  }
 
   submit = () => {
     console.log('this. addform.value', this.form.value);

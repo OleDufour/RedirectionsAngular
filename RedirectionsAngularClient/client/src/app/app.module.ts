@@ -16,8 +16,7 @@ import { AddComponent } from './pages/add/add.component';
 import { SearchComponent } from './pages/search/search.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { PublishComponent } from './pages/publish/publish.component';
-
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -40,7 +39,8 @@ import { PublishComponent } from './pages/publish/publish.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

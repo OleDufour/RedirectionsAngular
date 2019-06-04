@@ -56,12 +56,54 @@
    </div>
 
  </form>
+ <div class="">
+   <table>
+     <tbody>
+       <tr>
+        
+         <th>Source Type</th>
+         <th>Source</th>
+         <th>Target type</th>
+         <th>Target</th>
+         <th>Redirection type</th>
+         <th>{{dataSource?.bsApiReturnData.value.data.length}}</th>
 
+       </tr>
+       <tr *ngFor="let item of dataSource?.bsApiReturnData.value.data | paginate: {  itemsPerPage: 10,
+          currentPage: p,
+          totalItems: dataSource.bsApiReturnData.value.recordsTotal }">
+         <td style="display:none">{{item.redirectId}}</td>
+         <!-- <td>{{item.domainId}}</td> -->
+         <td>{{item.sourceTypeString}}</td>
+         <td>{{item.source}}</td>
+         <td>{{item.targetTypeString}}</td>
+         <td>{{item.target}}</td>
+         <td>{{item.redirectionType}}</td>
+       </tr>
+     </tbody>
+   </table>
+   <select #nbItems (change)="selectNbItembyPage($event, nbItems.value)"> 
+     <option value="10">10</option>
+     <option value="20">20</option>
+     <option value="30">30</option>
+   </select>
+   <pagination-controls (pageChange)="getPage($event)">
+   </pagination-controls>
+ </div>
+ <!-- <div class="course">
+    <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+        <mat-spinner></mat-spinner>
+    </div>
+  <span></span> nb : {{dataSource.bsApiReturnData.value.recordsFiltered}}
+  total : {{dataSource.bsApiReturnData.value.recordsTotal}}
+ <mat-table class="lessons-table mat-elevation-z8" [dataSource]="dataSource.bsApiReturnData.value.data"  
+ matSort matSortActive="redirectId" matSortDirection="asc" >
 
- <div class="course">
-  <span></span> nb : {{result?.recordsFiltered}}
-  total : {{result?.recordsTotal}}
- <mat-table class="lessons-table mat-elevation-z8" [dataSource]="result?.data">
+ <ng-container  matColumnDef="policyNumber">
+    <mat-header-cell *matHeaderCellDef>Policy Number</mat-header-cell>
+  
+</ng-container>
+
 
    <ng-container matColumnDef="redirectId">
      <div *matHeaderCellDef>#</div>
@@ -90,7 +132,7 @@
 
     <ng-container matColumnDef="redirectTypeString">
       <div *matHeaderCellDef>redirectTypeString</div>
-      <div *matCellDef="let redirectionModel">&nbsp;&nbsp;&nbsp;{{redirectionModel.redirectTypeString}}</div>
+      <div *matCellDef="let redirectionModel" class="duration-cell">&nbsp;&nbsp;&nbsp;{{redirectionModel.redirectTypeString}}</div>
     </ng-container>
 
  
@@ -104,7 +146,6 @@
 
 
   
-  <mat-paginator [length]="result?.recordsTotal" [pageSize]="3"
- [pageSizeOptions]="[3, 5, 10]"></mat-paginator>
+  <mat-paginator [length]="result?.recordsTotal" [pageSize]="3" [pageSizeOptions]="[3, 5, 10]"></mat-paginator> -->
 
-</div>
+ <!-- </div> -->

@@ -1,20 +1,51 @@
-
-
 .course {
-     
-  
+    text-align: center;
+    max-width: 390px;
     margin: 0 auto;
 }
 
+.course-thumbnail {
+    width: 150px;
+    margin: 20px auto 0 auto;
+    display: block;
+}
+
+.description-cell {
+    text-align: left;
+    margin: 10px auto;
+}
+
+.duration-cell {
+    text-align: center;
+}
+
+.duration-cell mat-icon {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 20px;
+}
+
+.spinner-container {
+    height: 360px;
+    width: 390px;
+    position: fixed;
+}
 
 .lessons-table {
     min-height: 360px;
     margin-top: 10px;
 }
 
-mat-row{
-border-color: lightgray;
-border-left-width: 1px;
-border-right-width: 1px;
- 
+.spinner-container mat-spinner {
+    margin: 130px auto 0 auto;
 }
+
+li {
+	display: inline;
+	list-style: none; /* pour enlever les puces sur IE7 */
+	margin: 10px;
+}
+
+.my-pagination /deep/ .ngx-pagination .current {
+    background: red;
+  }

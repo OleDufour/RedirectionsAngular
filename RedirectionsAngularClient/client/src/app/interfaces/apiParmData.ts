@@ -5,7 +5,7 @@ export class ApiParmData {
     pageNo: number
     pageSize: number
     recordsTotal: number
-
+    sortDirection: string
     includeDeletions: boolean
 }
 

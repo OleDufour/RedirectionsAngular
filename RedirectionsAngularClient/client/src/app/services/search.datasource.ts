@@ -13,32 +13,37 @@ import { ApiReturnData } from './../interfaces/apiReturnData';
 // import {ApiReturnInfo} from './../interfaces/apiReturnInfo';
 
 export class SearchDataSource {
-    private apdRedirectModel = new ApiReturnData<RedirectModel>();
-    public bsApiReturnData = new BehaviorSubject<ApiReturnData<any>>(this.apdRedirectModel);
+    private apdRedirectModel = new ApiReturnData<any>();
+    public bsApiReturnData = (new BehaviorSubject<ApiReturnData<any>>(this.apdRedirectModel));
     private loadingSubject = new BehaviorSubject<boolean>(false);
     public loading$ = this.loadingSubject.asObservable();
-    public test = this.bsApiReturnData.value;
+   
+
 
     constructor(private coursesService: ApiService) {
     }
 
-    public async loadLessonsNEW(dtp: ApiParmData) {
+    public loadLessonsNEW(dtp: ApiParmData) {
 
+        this.loadingSubject.next(true);
 
-        console.log('loadLessonsNEW', dtp);
-        //this.loadingSubject.next(true);
-
-        return await this.coursesService.search(dtp);
+        this.coursesService.search(dtp).subscribe(
+            x => {
+                this.bsApiReturnData.next(x);
+                
+                console.log('data:', x.data);
+            }
+        );
     }
 
-    // connect(collectionViewer: CollectionViewer): Observable<any> {
-    //     console.log("Connecting data source");
-    //     return this.bsApiReturnData.asObservable();
-    // }
+    connect(collectionViewer: CollectionViewer): Observable<ApiReturnData<any>> {
+        console.log("Connecting data source");
+        return this.bsApiReturnData.asObservable();
+    }
 
-    // disconnect(collectionViewer: CollectionViewer): void {
-    //     this.bsApiReturnData.complete();
-    //     this.loadingSubject.complete();
-    // }
+    disconnect(collectionViewer: CollectionViewer): void {
+        this.bsApiReturnData.complete();
+        this.loadingSubject.complete();
+    }
 
 }
