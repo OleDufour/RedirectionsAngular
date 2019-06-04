@@ -11,3 +11,5 @@ export class RedirectModel {
     redirectTypeString:string
     redirectType: number
 }
+
+

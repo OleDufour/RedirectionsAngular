@@ -8,8 +8,9 @@ import {
   MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
   MatSortModule, MatTableModule
 } from "@angular/material";
-
 import { AppRoutingModule } from './app-routing.module';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+
 import { AppComponent } from './app.component';
 import { AddComponent } from './pages/add/add.component';
 import { SearchComponent } from './pages/search/search.component';
@@ -29,6 +30,7 @@ import { PublishComponent } from './pages/publish/publish.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     ServiceModule,
     ReactiveFormsModule,

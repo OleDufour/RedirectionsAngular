@@ -1,10 +1,10 @@
 import { RedirectModel } from './redirectModel';
 
-export class DataTableParms {
+export class ApiParmData {
     redirectModel: RedirectModel
     pageNo: number
     pageSize: number
-    // searchValue: string,
+    recordsTotal: number
 
     includeDeletions: boolean
 }

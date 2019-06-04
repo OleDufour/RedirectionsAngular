@@ -1,41 +1,44 @@
 import { CollectionViewer, DataSource } from "@angular/cdk/collections";
 import { Observable } from 'rxjs';
-import { RedirectModel } from '../interfaces/redirectModel';
-import { ApiService } from "./api.service";
+
+
 import { BehaviorSubject } from "rxjs";
 import { catchError, finalize } from "rxjs/operators";
 import { of } from "rxjs";
-import { DataTableParms } from './../interfaces/dataTableParms';
 
+import { RedirectModel } from '../interfaces/redirectModel';
+import { ApiParmData } from '../interfaces/apiParmData';
+import { ApiService } from "./api.service";
+import { ApiReturnData } from './../interfaces/apiReturnData';
+// import {ApiReturnInfo} from './../interfaces/apiReturnInfo';
 
-export class SearchDataSource implements DataSource<RedirectModel> {
-    private lessonsSubject = new BehaviorSubject<RedirectModel[]>([]);
+export class SearchDataSource {
+    private apdRedirectModel = new ApiReturnData<RedirectModel>();
+    public bsApiReturnData = new BehaviorSubject<ApiReturnData<any>>(this.apdRedirectModel);
     private loadingSubject = new BehaviorSubject<boolean>(false);
     public loading$ = this.loadingSubject.asObservable();
+    public test = this.bsApiReturnData.value;
 
     constructor(private coursesService: ApiService) {
     }
 
-    loadLessonsNEW(dtp: DataTableParms) {
+    public async loadLessonsNEW(dtp: ApiParmData) {
+
+
         console.log('loadLessonsNEW', dtp);
-        this.loadingSubject.next(true);
+        //this.loadingSubject.next(true);
 
-        this.coursesService.search(dtp).pipe(
-            catchError(() => of([])),
-            finalize(() => this.loadingSubject.next(false))
-        )
-            .subscribe(redirectModels => this.lessonsSubject.next(redirectModels));
-
+        return await this.coursesService.search(dtp);
     }
 
-    connect(collectionViewer: CollectionViewer): Observable<RedirectModel[]> {
-        console.log("Connecting data source");
-        return this.lessonsSubject.asObservable();
-    }
+    // connect(collectionViewer: CollectionViewer): Observable<any> {
+    //     console.log("Connecting data source");
+    //     return this.bsApiReturnData.asObservable();
+    // }
 
-    disconnect(collectionViewer: CollectionViewer): void {
-        this.lessonsSubject.complete();
-        this.loadingSubject.complete();
-    }
+    // disconnect(collectionViewer: CollectionViewer): void {
+    //     this.bsApiReturnData.complete();
+    //     this.loadingSubject.complete();
+    // }
 
 }

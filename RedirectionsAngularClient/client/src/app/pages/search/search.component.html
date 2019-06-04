@@ -48,25 +48,20 @@
        <div class="form-group">
          <label for="target">Target</label>
          <input id="target" class="form-control" formControlName="target">
-
        </div>
-
      </div>
 
-
-     <!-- -->
      <p>Form value: {{ form.value | json }}</p>
      <p>Form status: {{ form.status | json }}</p>
-
-
    </div>
 
  </form>
 
 
  <div class="course">
-
- <mat-table class="lessons-table mat-elevation-z8" [dataSource]="dataSource">
+  <span></span> nb : {{result?.recordsFiltered}}
+  total : {{result?.recordsTotal}}
+ <mat-table class="lessons-table mat-elevation-z8" [dataSource]="result?.data">
 
    <ng-container matColumnDef="redirectId">
      <div *matHeaderCellDef>#</div>
@@ -106,4 +101,10 @@
    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 
  </mat-table>
+
+
+  
+  <mat-paginator [length]="result?.recordsTotal" [pageSize]="3"
+ [pageSizeOptions]="[3, 5, 10]"></mat-paginator>
+
 </div>

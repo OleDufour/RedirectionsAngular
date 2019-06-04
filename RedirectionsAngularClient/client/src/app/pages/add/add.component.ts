@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EnumService } from '../../services/enum.service';
 import { ApiService } from '../../services/api.service';
 import { RedirectModel } from '../../interfaces/redirectModel';
-import { ApiReturnModel } from 'src/app/interfaces/apiReturnData';
+import { ApiReturnInfo } from 'src/app/interfaces/apiReturnInfo';
 @Component({
   selector: 'app-root',
   templateUrl: './add.component.html'
@@ -18,7 +18,7 @@ export class AddComponent {
   public targetTypes: { id: number; name: string }[] = [];
   public redirectionTypes: { id: number; name: string }[] = [];
   //public submitting: boolean = false;
-  public editUpdateResult: ApiReturnModel;
+  public editUpdateResult: ApiReturnInfo;
 
   constructor(enumService: EnumService, private apiService: ApiService, private fb: FormBuilder) {
     this.createForm();
@@ -69,7 +69,7 @@ export class AddComponent {
 
     if (this.addform.status === 'VALID')
       this.apiService.AddOrEdit(this.addform.value).subscribe(
-        (response: ApiReturnModel) => {
+        (response: ApiReturnInfo) => {
           console.log("PUT Request is successful ", response);
           this.editUpdateResult = response;
           console.log('222222222222222222', this.editUpdateResult);

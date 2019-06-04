@@ -1,5 +1,9 @@
-export interface ApiReturnModel {
-    success: boolean,
-    message: string,
-    data: {redirectId:string}
+export class ApiReturnData<T> {
+    //       Draw : number;   
+    recordsTotal: number;
+    recordsFiltered: number;
+    data: T[]
+    Error: string;
 }
+
+ 

@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+ 
+using Newtonsoft.Json;
+
 
 namespace RedirectionsAngular.Model
 {
@@ -50,4 +51,22 @@ namespace RedirectionsAngular.Model
         public string Value { get; set; }
     }
 
-}
+
+
+        public class DataTablesReturnData<T>
+        {
+            [JsonProperty(PropertyName = "draw")]
+            public int Draw { get; set; }
+            [JsonProperty(PropertyName = "recordsTotal")]
+            public int RecordsTotal { get; set; }
+            [JsonProperty(PropertyName = "recordsFiltered")]
+            public int RecordsFiltered { get; set; }
+            [JsonProperty(PropertyName = "data")]
+            public IEnumerable<T> Data { get; set; }
+            [JsonProperty(PropertyName = "error")]
+            public string Error { get; set; }
+        }
+    }
+
+
+ 

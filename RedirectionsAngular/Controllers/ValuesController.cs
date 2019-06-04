@@ -33,11 +33,11 @@ namespace RedirectionsAngular.Controllers
 
         [HttpPost]
 
-       // [Route("redirect/getdatatableredirects")]
-        public List<RedirectModel> Search(DataTablesParameters dataTablesParameters)
-        {            
+        // [Route("redirect/getdatatableredirects")]
+        public DataTablesReturnData<RedirectModel> Search(DataTablesParameters dataTablesParameters)
+        {
             //var r = new RedirectPaging();
-           // r.DomainId = (EnumDomain)parms.DomainId;
+            // r.DomainId = (EnumDomain)parms.DomainId;
             //r.OrderByColumn = RedirectBusinessModule.OrderByColumn(parameters);
             //r.AscOrDesc = RedirectBusinessModule.AscOrDesc(parameters);
             //r.PageNo = parms.Start / parms.Length + 1;
@@ -55,19 +55,26 @@ namespace RedirectionsAngular.Controllers
             //        case nameof(r.RedirectType): r.RedirectType = (EnumRedirectType)Convert.ToInt16(p.SearchValue); break;
             //    }
             //}
-             var res = GetRedirectsForPaging(dataTablesParameters);//, out var filteredCount, out var totalCount
-            //return new DataTablesReturnData<RedirectModel>
-            //{
-            //    Draw = parameters.Draw,
-            //    RecordsFiltered = filteredCount,
-            //    RecordsTotal = totalCount,
-            //    Data = RedirectViewModelMapper.DtosToModels(res)
-            //};
-            return res.ToList();
-            return null;
+            var res = GetRedirectsForPaging(dataTablesParameters, out var filteredCount, out var totalCount);//
+                                                                                                             //return new DataTablesReturnData<RedirectModel>
+                                                                                                             //{
+                                                                                                             //    Draw = parameters.Draw,
+                                                                                                             //    RecordsFiltered = filteredCount,
+                                                                                                             //    RecordsTotal = totalCount,
+                                                                                                             //    Data = RedirectViewModelMapper.DtosToModels(res)
+                                                                                                             //};
+            return new DataTablesReturnData<RedirectModel>
+            {
+
+                RecordsFiltered = filteredCount,
+                RecordsTotal = totalCount,
+                Data = res
+            };
+
+
         }
 
-        public IEnumerable<RedirectModel> GetRedirectsForPaging(DataTablesParameters dataTablesParameters)//, out int filteredCount, out int totalCount
+        IEnumerable<RedirectModel> GetRedirectsForPaging(DataTablesParameters dataTablesParameters, out int filteredCount, out int totalCount)
         {
             using (var cnx = new SqlConnection(@"Data Source=SGEW0090\SQLEXPRESS;Initial Catalog=Front_Admin;Integrated Security=True"))
             {
@@ -75,7 +82,7 @@ namespace RedirectionsAngular.Controllers
                 SqlCommand cmd = new SqlCommand("seo.sp_GetRedirectsForPaging", cnx);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                int sourceType = dataTablesParameters.RedirectModel.SourceType==null?-1:(int) dataTablesParameters.RedirectModel.SourceType;
+                int sourceType = dataTablesParameters.RedirectModel.SourceType == null ? -1 : (int)dataTablesParameters.RedirectModel.SourceType;
                 int targetType = dataTablesParameters.RedirectModel.TargetType == null ? -1 : (int)dataTablesParameters.RedirectModel.TargetType;
                 int redirectType = dataTablesParameters.RedirectModel.RedirectType == null ? -1 : (int)dataTablesParameters.RedirectModel.RedirectType;
 
@@ -87,15 +94,15 @@ namespace RedirectionsAngular.Controllers
                 CreateParameter(cmd, "RedirectType", redirectType);
                 CreateParameter(cmd, "PageSize", dataTablesParameters.PageSize);
                 CreateParameter(cmd, "PageNo", dataTablesParameters.PageNo);
-               CreateParameter(cmd, "OrderByColumn", dataTablesParameters.OrderByColumn);
+                CreateParameter(cmd, "OrderByColumn", dataTablesParameters.OrderByColumn);
                 CreateParameter(cmd, "AscOrDesc", dataTablesParameters.AscOrDesc);
                 CreateParameter(cmd, "IncludeDeletions", false);
                 var filteredCountParam = CreateOutPutParameter(cmd, "RecordCount", DbType.Int32);
                 var totalCountParam = CreateOutPutParameter(cmd, "TotalRecordCount", DbType.Int32);
                 SqlDataReader rdr = cmd.ExecuteReader();
                 var res = ExecuteSelect(cmd, rdr);
-             //   filteredCount = GetOutPutIntParameter(filteredCountParam);
-            // totalCount = GetOutPutIntParameter(totalCountParam);
+                filteredCount = GetOutPutIntParameter(filteredCountParam);
+                totalCount = GetOutPutIntParameter(totalCountParam);
                 return res;
             }
         }
@@ -107,7 +114,7 @@ namespace RedirectionsAngular.Controllers
                 res = Convert.ToInt32(intParam.Value);
             return res;
         }
-        protected IEnumerable<RedirectModel> ExecuteSelect (IDbCommand cmd, SqlDataReader reader)
+        protected IEnumerable<RedirectModel> ExecuteSelect(IDbCommand cmd, SqlDataReader reader)
         {
             List<RedirectModel> l = new List<RedirectModel>();
             while (reader.Read())
@@ -120,7 +127,7 @@ namespace RedirectionsAngular.Controllers
                 rm.TargetType = (EnumSourceTypeTargetType)Convert.ToInt32(reader["TargetType"]);
                 rm.Target = reader["Target"].ToString();
                 rm.RedirectType = (EnumRedirectType)Convert.ToInt32(reader["RedirectType"]);
-                rm.DeletionDate = reader["DeletionDate"]==DBNull.Value?null: (DateTime?)reader["DeletionDate"];
+                rm.DeletionDate = reader["DeletionDate"] == DBNull.Value ? null : (DateTime?)reader["DeletionDate"];
                 l.Add(rm);
             }
 
