@@ -4,10 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ControlModule } from './controls/controls.module';
 import { ServiceModule } from './services/services.module';
 import { HttpClientModule } from '@angular/common/http';  // npm install --save @angular/material @angular/cdk
-import {
-  MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
-  MatSortModule, MatTableModule
-} from "@angular/material";
+
 import { AppRoutingModule } from './app-routing.module';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
@@ -35,11 +32,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ReactiveFormsModule,
     ControlModule,
     HttpClientModule,
-    MatInputModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatProgressSpinnerModule,
+   
     NgxPaginationModule
   ],
   providers: [],

@@ -5,8 +5,9 @@ import {SearchComponent} from './pages/search/search.component';
 import { PublishComponent } from './pages/publish/publish.component';
 
 const routes: Routes = [
-  {path:'', component: SearchComponent},
-  {path:'add', component: AddComponent},
+
+  {path:'', component: AddComponent},
+  {path:'search', component: SearchComponent},
   {path:'importer', component: PublishComponent}
   ,  {path:'publier', component: PublishComponent}
 ];
