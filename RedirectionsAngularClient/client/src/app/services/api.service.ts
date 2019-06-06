@@ -37,15 +37,8 @@ export class ApiService {
     }
 
     public search(dtp: ApiParmData): Observable<ApiReturnData<any>> {
-
-        // var test = this.httpClient.post<ApiReturnData<any>>(apiUrl + 'Search', dtp).pipe(
-        //     map(res => res)
-        // ) ;
-//alert('search')
-        // console.log('µµµµµµµµµµµµµµµµµµµµµµµµµµµµµµµ', test);
         return this.httpClient.post<ApiReturnData<any>>(apiUrl + 'Search', dtp).pipe(
             map(res => res)
-        ) ;
-
+        );
     }
 }

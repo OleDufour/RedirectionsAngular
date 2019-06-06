@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';  // npm install --save 
 import { AppRoutingModule } from './app-routing.module';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
+
 import { AppComponent } from './app.component';
 import { AddComponent } from './pages/add/add.component';
 import { SearchComponent } from './pages/search/search.component';
@@ -15,7 +16,10 @@ import { MenuComponent } from './pages/menu/menu.component';
 import { PublishComponent } from './pages/publish/publish.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 
-
+// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+// import { library } from '@fortawesome/fontawesome-svg-core';
+// import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+  
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,9 +37,18 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ControlModule,
     HttpClientModule,
    
-    NgxPaginationModule
+    NgxPaginationModule,
+ 
+     
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+constructor(){
+ 
+
+}
+
+ }

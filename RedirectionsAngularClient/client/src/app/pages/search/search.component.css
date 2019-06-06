@@ -1,51 +1,46 @@
-.course {
-    text-align: center;
-    max-width: 390px;
-    margin: 0 auto;
+ .btn-group,
+ .btn-group-vertical {
+   position: relative;
+   display: inline-block;
+   vertical-align: middle;
+ }
+ .btn, .btn.btn-default {
+  background: #eaeaea;
+ 
 }
 
-.course-thumbnail {
-    width: 150px;
-    margin: 20px auto 0 auto;
-    display: block;
+.fas {
+
+ color:white;
+
 }
 
-.description-cell {
-    text-align: left;
-    margin: 10px auto;
+.btn.btn-sm, .btn-sm, .btn-group-sm>.btn {
+  padding: 5px 13px;
 }
 
-.duration-cell {
-    text-align: center;
+ .btn.btn-info {
+  background: #03A9F4;
+  color: #ffffff;
+ }
+ .btn.btn-danger {
+  background: #f44336;
+  color: #ffffff;
+}
+.btn.btn-warning {
+  background: #FFC107;
+  color: #ffffff;
 }
 
-.duration-cell mat-icon {
-    display: inline-block;
-    vertical-align: middle;
-    font-size: 20px;
+
+ .btn, .btn.btn-default {
+  background: #eaeaea;
+  color: #333333;
 }
 
-.spinner-container {
-    height: 360px;
-    width: 390px;
-    position: fixed;
-}
 
-.lessons-table {
-    min-height: 360px;
-    margin-top: 10px;
-}
+ .my-pagination /deep/ .ngx-pagination .current {
+   background: red;
+ }
 
-.spinner-container mat-spinner {
-    margin: 130px auto 0 auto;
-}
-
-li {
-	display: inline;
-	list-style: none; /* pour enlever les puces sur IE7 */
-	margin: 10px;
-}
-
-.my-pagination /deep/ .ngx-pagination .current {
-    background: red;
-  }
+ 
