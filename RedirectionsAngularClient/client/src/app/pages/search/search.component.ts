@@ -8,7 +8,7 @@ import { ApiService } from '../../services/api.service';
 import { RedirectModel } from '../../interfaces/redirectModel';
 import { ApiParmData } from '../../interfaces/apiParmData';
 import { ApiReturnData } from 'src/app/interfaces/apiReturnData';
-
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-search',

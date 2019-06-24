@@ -5,6 +5,8 @@ import { EnumService } from '../../services/enum.service';
 import { ApiService } from '../../services/api.service';
 import { RedirectModel } from '../../interfaces/redirectModel';
 import { ApiReturnInfo } from 'src/app/interfaces/apiReturnInfo';
+ 
+
 @Component({
   selector: 'app-root',
   templateUrl: './add.component.html'

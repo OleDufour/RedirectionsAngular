@@ -16,10 +16,10 @@ import { MenuComponent } from './pages/menu/menu.component';
 import { PublishComponent } from './pages/publish/publish.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 
-// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-// import { library } from '@fortawesome/fontawesome-svg-core';
-// import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-  
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,8 +37,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ControlModule,
     HttpClientModule,
    
-    NgxPaginationModule,
- 
+    NgxPaginationModule,    
+    FontAwesomeModule
      
   ],
   providers: [],
@@ -47,7 +47,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 export class AppModule {
 
 constructor(){
- 
+  library.add(faCoffee);
 
 }
 
