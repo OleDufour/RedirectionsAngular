@@ -18,7 +18,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee,faHistory, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [
@@ -47,7 +47,7 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 export class AppModule {
 
 constructor(){
-  library.add(faCoffee);
+  library.add(faCoffee,faHistory, faPen, faTrash);
 
 }
 
