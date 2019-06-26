@@ -3,11 +3,9 @@
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
       <trans-unit id="introductionHeader" datatype="html">
-        <source>
-    Hello i18n!
-</source>
+         
         <target>
-    GUTENTAG i18n !
+    Hello i18n !
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app\app.component.ts</context>
