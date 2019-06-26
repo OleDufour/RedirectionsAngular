@@ -46,6 +46,7 @@ import { faCoffee,faHistory, faPen, faTrash } from '@fortawesome/free-solid-svg-
 })
 export class AppModule {
 
+  
 constructor(){
   library.add(faCoffee,faHistory, faPen, faTrash);
 
