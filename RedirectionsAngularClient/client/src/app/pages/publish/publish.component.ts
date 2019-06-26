@@ -24,4 +24,16 @@ export class PublishComponent implements OnInit {
   female() { this.gender = 'female'; }
   other() { this.gender = 'other'; }
 
+
+  changeLang(lang: string) {
+
+    if (lang === 'fr') {
+      localStorage.setItem('locale', 'fr');
+    }
+
+    if (lang === 'de') {
+      localStorage.setItem('locale', 'de');
+    }
+  }
+
 }

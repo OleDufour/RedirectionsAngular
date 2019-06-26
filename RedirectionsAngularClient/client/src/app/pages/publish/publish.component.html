@@ -1,3 +1,17 @@
+<a mat-menu-item href="" (click)="changeLang('de')">
+   
+  <span>DE</span>
+</a>
+
+<a mat-menu-item href="" (click)="changeLang('fr')">
+   
+  <span>FR</span>
+</a>
+
+
+
+
+
 <h1 i18n="User welcome|An introduction header for this sample@@introductionHeader">
   Hello i18n!
 </h1>
@@ -12,7 +26,8 @@
 <span i18n>Updated {minutes, plural, =0 {just now} =1 {one minute ago} other {{{minutes}} minutes ago}}</span>
 ({{minutes}})
 <br><br>
-<button (click)="male()">&#9794;</button> <button (click)="female()">&#9792;</button> <button (click)="other()">&#9895;</button>
+<button (click)="male()">&#9794;</button> <button (click)="female()">&#9792;</button> <button
+  (click)="other()">&#9895;</button>
 <span i18n>The author is {gender, select, male {male} female {female} other {other}}</span>
 <br><br>
 <span i18n>Updated: {minutes, plural,
