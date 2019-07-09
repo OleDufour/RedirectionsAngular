@@ -19,6 +19,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCoffee,faHistory, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { NavbarComponent } from './pages/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { faCoffee,faHistory, faPen, faTrash } from '@fortawesome/free-solid-svg-
     AddComponent,
     SearchComponent,
     MenuComponent,
-    PublishComponent
+    PublishComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
