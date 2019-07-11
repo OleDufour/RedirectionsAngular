@@ -1,10 +1,3 @@
-<div style="text-align:center">
-  <!-- simple name only that assumes the 'fas' prefix -->
-  <fa-icon icon="history"></fa-icon>
-  <!-- ['fas', 'coffee'] is an array that indicates the [prefix, iconName] -->
-  <fa-icon [icon]="['fas', 'coffee']"></fa-icon>
-</div>
-
 <form [formGroup]="form" (ngSubmit)="submit()" #formDir="ngForm">
   <div class="row">
 
@@ -13,47 +6,47 @@
         placeholder="redirectId" formControlName="redirectId">
 
       <div class="form-group">
-        <label for="domain">Domain</label>
+        <label for="domain" i18n="@@domain">Domain</label>
         <select id="domain" class="form-control" formControlName="domainId">
           <option *ngFor="let idValue of domains" [value]="idValue.id">{{idValue.name}}</option>
         </select>
       </div>
       <div class="form-group">
-        <label for="sourceType">Type de source</label>
+        <label for="sourceType" i18n="@@sourceType">Type de source</label>
         <select id="sourceType" class="form-control" formControlName="sourceType">
           <option *ngFor="let idValue of sourceTypes" [value]="idValue.id">{{idValue.name}}</option>
         </select>
       </div>
 
       <div class="form-group">
-        <label for="targetType">Type de target</label>
+        <label for="targetType" i18n="@@targetType">Type de target</label>
         <select id="targetType" class="form-control" formControlName="targetType">
           <option *ngFor="let idValue of targetTypes" [value]="idValue.id">{{idValue.name}}</option>
         </select>
       </div>
 
       <div class="form-group">
-        <label for="targetType">Type de target</label>
+        <label for="targetType" i18n="@@includeDeletions">Type de target</label>
         <input id="source" class="form-control" formControlName="source" type="checkbox">
       </div>
 
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary" i18n="@@search">Submit</button>
     </div>
     <div class="col-sm-4">
       <div class="form-group">
-        <label for="redirectionType">Type de redirection</label>
+        <label for="redirectionType" i18n="@@redirectionType">Type de redirection</label>
         <select id="redirectionType" class="form-control" formControlName="redirectionType">
           <option *ngFor="let idValue of redirectionTypes" [value]="idValue.id">{{idValue.name}}</option>
         </select>
       </div>
 
       <div class="form-group">
-        <label for="source">Source</label>
+        <label for="source" i18n="@@source">Source</label>
         <input id="source" class="form-control" formControlName="source" value=''>
       </div>
 
       <div class="form-group">
-        <label for="target">Target</label>
+        <label for="target"  i18n="@@target">Target</label>
         <input id="target" class="form-control" formControlName="target">
       </div>
     </div>
@@ -68,11 +61,11 @@
     <tbody>
       <tr>
         <td> redirectId </td>
-        <th>Source Type</th>
-        <th>Source</th>
-        <th>Target type</th>
-        <th>Target</th>
-        <th>Redirection type</th>
+        <th i18n="@@source">[Not translated]</th>
+        <th i18n="@@sourceType">[Not translated]</th>
+        <th i18n="@@targetType">[Not translated]</th>
+        <th i18n="@@target">[Not translated]</th>
+        <th i18n="@@redirectionType">Redirection type</th>
         <th>{{result?.data?.length}}</th>
       </tr>
       <tr *ngFor="let item of result?.data | paginate: {  itemsPerPage: dtp?.pageSize,

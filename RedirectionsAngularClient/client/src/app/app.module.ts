@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ControlModule } from './controls/controls.module';
+
 import { ServiceModule } from './services/services.module';
 import { HttpClientModule } from '@angular/common/http';  // npm install --save @angular/material @angular/cdk
 
@@ -20,6 +21,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCoffee,faHistory, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { NavbarComponent } from './pages/navbar/navbar.component';
+import { ImportComponent } from './pages/import/import.component';
+// import { UploadComponent } from './upload/upload.component';
+ 
 
 @NgModule({
   declarations: [
@@ -28,7 +32,8 @@ import { NavbarComponent } from './pages/navbar/navbar.component';
     SearchComponent,
     MenuComponent,
     PublishComponent,
-    NavbarComponent
+    NavbarComponent,
+    ImportComponent    
   ],
   imports: [
     BrowserModule,
@@ -36,12 +41,12 @@ import { NavbarComponent } from './pages/navbar/navbar.component';
     AppRoutingModule,
     ServiceModule,
     ReactiveFormsModule,
-    ControlModule,
+  
     HttpClientModule,
    
     NgxPaginationModule,    
-    FontAwesomeModule
-     
+    FontAwesomeModule,
+    ControlModule,   
   ],
   providers: [],
   bootstrap: [AppComponent]

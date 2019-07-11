@@ -23,7 +23,7 @@
         <target>Recherche
         </target>
       </trans-unit>
-      <trans-unit id="adding">
+      <trans-unit id="add">
         <target>Ajout
         </target>
       </trans-unit>
@@ -55,9 +55,10 @@
         <target>Type de redirection</target>
       </trans-unit>
 
-      <trans-unit id="submit">
-        <target>Soumettre</target>
+      <trans-unit id="includeDeletions">
+        <target>Inclure les suppressions</target>
       </trans-unit>
+
 
 
       <trans-unit id="701174153757adf13e7c24a248c8a873ac9f5193" datatype="html">

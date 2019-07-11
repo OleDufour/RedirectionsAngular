@@ -21,8 +21,8 @@
         <target>Search
         </target>
       </trans-unit>
-      <trans-unit id="adding">
-        <target>New
+      <trans-unit id="add">
+        <target>Add
         </target>
       </trans-unit>
       <trans-unit id="import">
@@ -53,8 +53,8 @@
         <target>Redirection type</target>
       </trans-unit>
 
-      <trans-unit id="submit">
-        <target>Submit</target>
+     <trans-unit id="includeDeletions">
+        <target>Include deleted elements</target>
       </trans-unit>
 
 
