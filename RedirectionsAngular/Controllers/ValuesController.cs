@@ -269,7 +269,7 @@ namespace RedirectionsAngular.Controllers
         }
 
         [HttpPost]
-        // [Authorize(Policy = AuthorizePolicyConsts.Redirect_Read_Write)]
+        // [Authorize(Policy = AuthorizePolicyConsts.Redirect_Read_Write)] ddddddddddddd eeeeee
         //   [Route("redirect/import")]
         public ActionResult Import(IFormFile file, int? domainId = null)
         {
