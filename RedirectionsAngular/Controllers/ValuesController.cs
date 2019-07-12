@@ -304,7 +304,7 @@ namespace RedirectionsAngular.Controllers
                         }
                         catch (ReaderException) // Le fichier est aussi corrompu que François Fillon.
                         {
-                            // report.AddReport(RedirectResources.app_redirect_csvfile_invalidformat, 0);
+                            // report.AddReport(RedirectResources.app_redirect_csvfile_invalidformat, 0);     sss
                             return BadRequest();
                         }
 
