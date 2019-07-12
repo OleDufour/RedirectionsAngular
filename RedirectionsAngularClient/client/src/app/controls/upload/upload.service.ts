@@ -9,7 +9,7 @@ import apiUrl from '../../const/apiUrl';
 })
 export class UploadService {
 
-  dtp: any;
+  dtp: any;// test
 
   constructor(private httpClient: HttpClient) { }
 
