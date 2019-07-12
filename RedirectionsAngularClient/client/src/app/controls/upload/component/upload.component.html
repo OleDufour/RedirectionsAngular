@@ -1,5 +1,5 @@
-<div class="uploadfilecontainer" appDragDrop (onFileDropped)="uploadFile($event)">
-  <input type="file" hidden #fileInput (change)="uploadFile($event.target.files)" />
+<div class="uploadfilecontainer" appDragDrop (onFileDropped)="addFile($event)">
+  <input type="file" hidden #fileInput (change)="addFile($event.target.files)" />
 
   <div class="text-center p-5">
     <i aria-hidden="true" class="fa fa-4x fa-file-excel-o"></i>
@@ -7,14 +7,11 @@
     <button class="btn btn-lg btn-primary" (click)="fileInput.click()">Sélectionner un fichier .csv</button>
 
 
-    <h3 class="text-center">{{file.name}}</h3>
+    <h3 class="text-center">{{file?.name}}</h3>
     <button class="delete-file" (click)="deleteAttachment(files[0])">
       <img src="../../assets/Recycle_Bin_Full.png">
     </button>
 
-    <button [style.display] *ngIf="file"  class="btn btn-lg btn-primary"
-      (click)="fileInput.click()">Importer</button>
-
-
+    <button  *ngIf="file" class="btn btn-lg btn-primary" (click)="upload()">Importer</button>
   </div>
 </div>

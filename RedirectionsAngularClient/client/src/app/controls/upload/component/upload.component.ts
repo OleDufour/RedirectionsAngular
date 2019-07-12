@@ -1,5 +1,6 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, Input } from '@angular/core';
 import { DragDropDirective } from './../drag-drop.directive'
+import { UploadService } from '../upload.service';
 
 @Component({
   selector: 'app-upload',
@@ -8,31 +9,37 @@ import { DragDropDirective } from './../drag-drop.directive'
 })
 export class UploadComponent implements OnInit {
 
-  constructor() { }
+  @Input() url: string;
+
+  constructor(private uploadService: UploadService) { }
 
   ngOnInit() {
   }
 
 
-  file: any =null;
+  file: any = null;
 
   files: any = [];
 
-  uploadFile(event) {
-    alert('');
+  addFile(event) {
+    alert(this.url);
 
     for (let index = 0; index < event.length; index++) {
       const element = event[index];
       this.files.push(element.name)
 
-      this.file =element; 
+      this.file = element;
     }
   }
   deleteAttachment(index) {
-    this.files.splice(index, 1);
-    this.file=null;
+    // this.files.splice(index, 1);
+    this.file = null;
   }
 
+
+  upload() {
+    this.uploadService.upload(this.file);
+  }
 
 
 }

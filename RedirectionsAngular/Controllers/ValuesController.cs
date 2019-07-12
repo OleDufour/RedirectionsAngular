@@ -7,6 +7,11 @@ using Microsoft.AspNetCore.Cors;
 using RedirectionsAngular.Model;
 using System.Data.SqlClient;
 using System.Data;
+using Microsoft.AspNetCore.Http;
+using CsvHelper.Configuration;
+using CsvHelper;
+using System.IO;
+using CsvHelper.TypeConversion;
 
 namespace RedirectionsAngular.Controllers
 {
@@ -262,5 +267,74 @@ namespace RedirectionsAngular.Controllers
         public void Delete(int id)
         {
         }
+
+        [HttpPost]
+        // [Authorize(Policy = AuthorizePolicyConsts.Redirect_Read_Write)]
+        //   [Route("redirect/import")]
+        public ActionResult Import(IFormFile file, int? domainId = null)
+        {
+            var redirects = new List<RedirectModel>();
+
+            var current_line = 2; //not 0 to skip header
+            using (var stream = file.OpenReadStream())
+            {
+                var conf = new Configuration()
+                {
+                    Delimiter = ";",
+                    // disable header and field validation, not all fields are present in the csv file
+                    HeaderValidated = null,
+                    MissingFieldFound = null,
+                    TrimOptions = TrimOptions.Trim,
+                    IgnoreBlankLines = true,
+                    // Deal with spotty headers, � characters appears sometimes (from Excel ?)
+                    PrepareHeaderForMatch = (string header, int index) => header.Replace("�", string.Empty).ToLower().Trim()
+                };
+
+                using (var reader = new CsvReader(new StreamReader(stream), conf))
+                {
+                    // Ignore header case.
+                    while (reader.Read())
+                    {
+                        RedirectModel dto = null;
+                        try
+                        {
+                            var record = reader.GetRecord<RedirectModel>();
+
+                        
+                        }
+                        catch (ReaderException) // Le fichier est aussi corrompu que François Fillon.
+                        {
+                            // report.AddReport(RedirectResources.app_redirect_csvfile_invalidformat, 0);
+                            return BadRequest();
+                        }
+
+                        catch (TypeConverterException e)
+                        {
+                            //    report.AddReport(e.Text + " " + RedirectResources.app_invalid_value, current_line);
+                        }
+                        catch (Exception) // Le fichier est aussi corrompu que François Fillon.
+                        {
+                            // report.AddReport(RedirectResources.app_redirect_csvfile_invalidformat, 0);
+                            return BadRequest();
+                        }
+
+
+                        if (dto != null)
+                        {
+                            redirects.Add(dto);
+                        }
+                        current_line++;
+                    }
+                }
+            }
+
+
+            return Ok();
+
+        }
+
+
+
+
     }
 }
