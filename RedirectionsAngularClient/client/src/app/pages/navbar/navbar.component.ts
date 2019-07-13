@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -7,20 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+  storedLang: string;
   constructor() { }
 
+
   ngOnInit() {
+    this.storedLang = localStorage.getItem('locale') == 'fr' ? 'fr' : null;
   }
 
   changeLang(lang: string) {
-
-    if (lang === 'fr') {
-      localStorage.setItem('locale', 'fr');
-    }
-
-    if (lang === 'en') {
-      localStorage.setItem('locale', 'en');
-    }
+    localStorage.setItem('locale', lang);
   }
-
 }
