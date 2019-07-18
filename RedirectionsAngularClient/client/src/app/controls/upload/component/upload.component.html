@@ -1,3 +1,6 @@
+
+<h1>{{errorMessage}}</h1>
+
 <div class="uploadfilecontainer" appDragDrop (onFileDropped)="addFile($event)" style="color:gray;text-align:center">
  
 <fa-icon icon="file-csv" style="color:gray;text-align:center" class="fa-5x"></fa-icon>
@@ -12,13 +15,15 @@
 
 
     <h3 class="text-center">{{file?.name}}</h3>
-    <button class="delete-file" (click)="deleteAttachment(files[0])">
-      <img src="../../assets/Recycle_Bin_Full.png">
-    </button>
+  
+ 
+
 
     <button  *ngIf="file" class="btn btn-lg btn-primary" (click)="upload()">Importer</button>
   </div>
 </div>
+
+
 
 
 

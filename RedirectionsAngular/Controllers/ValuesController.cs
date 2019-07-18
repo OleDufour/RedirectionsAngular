@@ -222,6 +222,7 @@ namespace RedirectionsAngular.Controllers
         //   [Route("redirect/import")]
         public ActionResult Import(IFormFile file, int? domainId = null)
         {
+            return Ok("ddd");
             var redirects = new List<RedirectModel>();
 
             var current_line = 2; //not 0 to skip header
@@ -278,7 +279,7 @@ namespace RedirectionsAngular.Controllers
             }
 
 
-            return Ok();
+            return Ok("ddd");
 
         }
 

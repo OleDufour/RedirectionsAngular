@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from "@angular/common/http";
 import apiUrl from '../../const/apiUrl';
 
@@ -13,19 +13,15 @@ export class UploadService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public upload(file: any) {
-    
+  public upload(file: any):Observable<any>  {
+
 
     const formData: FormData = new FormData();
-    const tmpUrl=`${apiUrl}Import`;  // +"File/Post"
+    const tmpUrl = `${apiUrl}Import`;  // +"File/Post"
     formData.append("File", file, file.name);
 
-    this.httpClient.post(tmpUrl, formData )
-      .subscribe((response) => {
-        console.log('response', response)
-      },
-        (error) => {
-          console.log('error in fileupload', error)
-        })
-  }
+ return   this.httpClient.post(tmpUrl, formData);
+     
+ 
+      }
 }

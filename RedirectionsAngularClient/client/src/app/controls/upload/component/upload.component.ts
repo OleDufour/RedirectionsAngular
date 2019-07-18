@@ -10,6 +10,7 @@ import { UploadService } from '../upload.service';
 export class UploadComponent implements OnInit {
 
   @Input() url: string;
+errorMessage:string;
 
   constructor(private uploadService: UploadService) { }
 
@@ -38,7 +39,25 @@ export class UploadComponent implements OnInit {
 
 
   upload() {
-    this.uploadService.upload(this.file);
+
+    /*
+    var t = this.uploadService.upload(this.file);
+    console.log('resultat final', t);
+  */
+
+    var t = this.uploadService.upload(this.file).subscribe((response) => {
+      console.log('response', response);
+      return response;
+    },
+      (error) => {
+        console.log('error in fileupload', error.statusText);
+
+        this.errorMessage= error.statusText;
+        return error;
+      })
+
+
+
   }
 
 
