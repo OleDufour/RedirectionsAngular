@@ -1,10 +1,14 @@
-<div class="uploadfilecontainer" appDragDrop (onFileDropped)="addFile($event)">
+<div class="uploadfilecontainer" appDragDrop (onFileDropped)="addFile($event)" style="color:gray;text-align:center">
+ 
+<fa-icon icon="file-csv" style="color:gray;text-align:center" class="fa-5x"></fa-icon>
+ 
+ 
   <input type="file" hidden #fileInput (change)="addFile($event.target.files)" />
 
   <div class="text-center p-5">
     <i aria-hidden="true" class="fa fa-4x fa-file-excel-o"></i>
-    <h4>Déposez un fichier .csv sur l'écran pour l'importer<br>ou</h4>
-    <button class="btn btn-lg btn-primary" (click)="fileInput.click()">Sélectionner un fichier .csv</button>
+    <h4 style="color:inherit"> Déposez un fichier .csv sur l'écran pour l'importer<br>ou</h4>
+    <button class="btn btn-lg btn-primary" style="background-color:gray" (click)="fileInput.click()" >Sélectionner un fichier .csv</button>
 
 
     <h3 class="text-center">{{file?.name}}</h3>
@@ -15,3 +19,12 @@
     <button  *ngIf="file" class="btn btn-lg btn-primary" (click)="upload()">Importer</button>
   </div>
 </div>
+
+
+
+ 
+
+
+ 
+ 
+ 

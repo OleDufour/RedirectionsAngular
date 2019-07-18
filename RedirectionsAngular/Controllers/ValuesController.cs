@@ -12,6 +12,7 @@ using CsvHelper.Configuration;
 using CsvHelper;
 using System.IO;
 using CsvHelper.TypeConversion;
+using System.Threading;
 
 namespace RedirectionsAngular.Controllers
 {
@@ -169,7 +170,6 @@ namespace RedirectionsAngular.Controllers
         [HttpPost]
         public IActionResult AddOrEdit(RedirectModel redirect)//[FromBody] 
         {
-
             // OK
             if (redirect.DomainId == EnumDomain.FR_FR)
                 return Ok(new ResultModel
@@ -196,59 +196,8 @@ namespace RedirectionsAngular.Controllers
 
 
             redirect = null;
-            //if (ModelState.IsValid)
-            //{
-            //    try
-            //    {
-            //        // Update
-            //        if (redirect.RedirectId.HasValue && redirect.RedirectId.Value > 0)
-            //        {
-            //            try
-            //            {
-            //                RedirectModelList.RedirectList.Add(redirect);
-            //            }
-            //            catch (Exception e)
-            //            {
-            //                return  Ok(new ResultModel
-            //                {
-            //                    Success = false,
-            //                    Message = e.Message,
-            //                    Data = null
-            //                });
-            //            }
 
-            //            // Element exist but has been deleted.
-            //            return Ok(new   ResultModel
-            //            {
-            //                Success = false,
-            //                Message = "RedirectResources.app_already_deleted",
-            //                Data = new { IsDeleted = true }
-            //            });
-            //        }
-
-
-            //        if (redirect.RedirectId.HasValue && redirect.RedirectId.Value > 0)
-            //        {
-            //            RedirectModelList.UpdateRedirectList(redirect);
-            //        }
-
-            //        return Ok(new ResultModel
-            //        {
-            //            Success = false,
-            //            Message = "app_add_error"
-            //        });
-            //    }
-
-
-            //    catch (Exception exception)
-            //    {
-            //        return Ok(new ResultModel
-            //        {
-            //            Success = false,
-            //            Message = $"{".app_errors_list"} :<br/> + {exception.Message}"
-            //        });
-            //    }
-            //}
+            Thread.Sleep(10000);
 
             return Ok(new ResultModel
             {
