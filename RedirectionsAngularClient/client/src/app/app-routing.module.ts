@@ -1,9 +1,9 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AddComponent } from './pages/add/add.component'
-import { SearchComponent } from './pages/search/search.component';
-import { PublishComponent } from './pages/publish/publish.component';
-import { ImportComponent } from './pages/import/import.component';
+import { AddComponent } from './crudFeatureModule/add/add.component'
+import { SearchComponent } from './crudFeatureModule/search/search.component';
+import { PublishComponent } from './crudFeatureModule/publish/publish.component';
+import { ImportComponent } from './crudFeatureModule/import/import.component';
 
 const routes: Routes = [
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { EnumDomain } from '../../const/EnumDomain';
-import { EnumSourceType  } from '../../const/EnumSourceTypeTargetType';
+import { EnumDomain } from '../../modelSharedModule/const/EnumDomain'
+import { EnumSourceType  } from '../../modelSharedModule/const/EnumSourceTypeTargetType';
  
 
 

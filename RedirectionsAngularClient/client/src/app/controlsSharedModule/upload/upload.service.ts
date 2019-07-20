@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from "@angular/common/http";
-import apiUrl from '../../const/apiUrl';
+import apiUrl from '../../modelSharedModule/const/apiUrl';
 
 
 @Injectable({

@@ -5,9 +5,9 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 
 import { EnumService } from '../../services/enum.service';
 import { ApiService } from '../../services/api.service';
-import { RedirectModel } from '../../interfaces/redirectModel';
-import { ApiParmData } from '../../interfaces/apiParmData';
-import { ApiReturnData } from 'src/app/interfaces/apiReturnData';
+import { RedirectModel } from '../../modelSharedModule/interfaces/redirectModel';
+import { ApiParmData } from '../../modelSharedModule/interfaces/apiParmData';
+import { ApiReturnData } from 'src/app/modelSharedModule/interfaces/apiReturnData';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @Component({

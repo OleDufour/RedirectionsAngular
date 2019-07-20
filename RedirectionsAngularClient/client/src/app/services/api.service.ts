@@ -7,10 +7,10 @@ import { BehaviorSubject } from "rxjs";
 import { catchError, finalize } from "rxjs/operators";
 import { of } from "rxjs";
 
-import { RedirectModel } from '../interfaces/redirectModel';
-import { ApiReturnData } from '../interfaces/apiReturnData';
-import { ApiParmData } from '../interfaces/apiParmData';
-import apiUrl from '../const/apiUrl'
+import { RedirectModel } from '../modelSharedModule/interfaces/redirectModel';
+import { ApiReturnData } from '../modelSharedModule/interfaces/apiReturnData';
+import { ApiParmData } from '../modelSharedModule/interfaces/apiParmData';
+import apiUrl from '../modelSharedModule/const/apiUrl'
 
 @Injectable({
     providedIn: 'root'

@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
- import {UploadComponent} from '../../controls/upload/component/upload.component';
-import { HttpEventType, HttpResponse } from '@angular/common/http';
 
-import {DragDropDirective} from '../../controls/upload/drag-drop.directive';
 
 @Component({
   selector: 'app-import',

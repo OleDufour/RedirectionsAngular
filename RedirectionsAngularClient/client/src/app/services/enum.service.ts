@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { EnumDomain } from '../const/EnumDomain';
-import { EnumSourceType, EnumTargetType } from '../const/EnumSourceTypeTargetType';
-import { EnumRedirectionType } from '../const/EnumRedirectionType';
+import { EnumDomain } from '../modelSharedModule/const/EnumDomain';
+import { EnumSourceType, EnumTargetType } from '../modelSharedModule/const/EnumSourceTypeTargetType';
+import { EnumRedirectionType } from '../modelSharedModule/const/EnumRedirectionType';
 
 @Injectable({
   providedIn: 'root'

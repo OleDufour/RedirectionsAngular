@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 //import { AddService } from './add.service';
 import { EnumService } from '../../services/enum.service';
 import { ApiService } from '../../services/api.service';
-import { RedirectModel } from '../../interfaces/redirectModel';
-import { ApiReturnInfo } from 'src/app/interfaces/apiReturnInfo';
- 
+import { RedirectModel } from '../../modelSharedModule/interfaces/redirectModel';
+import { ApiReturnInfo } from 'src/app/modelSharedModule/interfaces/apiReturnInfo';
+import { ErrorShowService } from '../../services/error-show.service';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +23,8 @@ export class AddComponent {
   //public submitting: boolean = false;
   public editUpdateResult: ApiReturnInfo;
 
-  constructor(enumService: EnumService, private apiService: ApiService, private fb: FormBuilder) {
+  constructor(enumService: EnumService, private apiService: ApiService, private fb: FormBuilder
+    , private errorShowService: ErrorShowService) {
     this.createForm();
 
     this.domains = enumService.getEnumDomain();
@@ -76,14 +78,20 @@ export class AddComponent {
           this.editUpdateResult = response;
           console.log('222222222222222222', this.editUpdateResult);
           console.log('3333333333333', this.editUpdateResult.data.redirectId);
-          this.addform.controls['redirectId'].setValue(this.editUpdateResult.data.redirectId);      
+          this.addform.controls['redirectId'].setValue(this.editUpdateResult.data.redirectId);
         },
-        error => {
+        error => {        
           console.log("Error", error);
+          this.errorShowService.passError(error.name);
           return error;
         }
       );
     console.log('111111111111111111111111', this.editUpdateResult)
+  }
+
+  testError   ()   {
+    this.errorShowService.passError('foutje');
+
   }
 
 

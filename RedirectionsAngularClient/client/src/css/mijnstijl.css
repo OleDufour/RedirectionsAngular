@@ -1,0 +1,39 @@
+.btn-group,
+.btn-group-vertical {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+.btn, .btn.btn-default {
+ background: #eaeaea;
+
+}
+
+.fas {
+
+color:white;
+
+}
+
+.btn.btn-sm, .btn-sm, .btn-group-sm>.btn {
+ padding: 5px 13px;
+}
+
+.btn.btn-info {
+ background: #03A9F4;
+ color: #ffffff;
+}
+.btn.btn-danger {
+ background: #f44336;
+ color: #ffffff;
+}
+.btn.btn-warning {
+ background: #FFC107;
+ color: #ffffff;
+}
+
+
+.btn, .btn.btn-default {
+ background: #eaeaea;
+ color: #333333;
+}
