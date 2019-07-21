@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';  // npm install --save 
 
 import { ControlModule } from './controlsSharedModule/controls.module';
 import { ServiceModule } from './services/services.module'; // bientot obsolete
-//import {Services2Module} from './services2ServiceModule/services2.module';
 
 import {CrudModule} from './crudFeatureModule/crud.module';
 import { AppRoutingModule } from './app-routing.module';

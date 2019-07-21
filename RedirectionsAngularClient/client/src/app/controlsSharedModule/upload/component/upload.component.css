@@ -44,19 +44,13 @@
 
 
 .btn.btn-primary {
-  background: rgba(35, 35, 35, .9);
+  
   color: #ffffff;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  /* font-family: Roboto, Helvetica, Arial, sans-serif; */
-  margin: 10px 0;
-  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-  font-weight: 400;
-  color: #505458;
+
+
+button{
+
+   background-color:gray  
 }

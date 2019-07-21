@@ -1,13 +1,14 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from "@angular/common";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { UploadComponent } from './upload/component/upload.component';
 import { DragDropDirective } from './upload/drag-drop.directive';
 import { ErrorComponent } from './error/error.component';
- 
-import { faFileCsv ,faPen, faFileExcel} from '@fortawesome/free-solid-svg-icons';
+
+import { faFileCsv, faPen, faFileExcel } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 
@@ -19,6 +20,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
     CommonModule,
     FontAwesomeModule,
     BsDropdownModule.forRoot()
+    , BrowserAnimationsModule
   ],
   exports: [DropdownComponent, UploadComponent, DragDropDirective, ErrorComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -29,7 +31,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 export class ControlModule {
 
   constructor() {
-    library.add(faFileCsv,faPen, faFileExcel);
+    library.add(faFileCsv, faPen, faFileExcel);
 
   }
 

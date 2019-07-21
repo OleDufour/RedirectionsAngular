@@ -8,7 +8,8 @@ import { ApiService } from '../../services/api.service';
 import { RedirectModel } from '../../modelSharedModule/interfaces/redirectModel';
 import { ApiParmData } from '../../modelSharedModule/interfaces/apiParmData';
 import { ApiReturnData } from 'src/app/modelSharedModule/interfaces/apiReturnData';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+ 
+import { ErrorShowService } from '../../services/error-show.service';
 
 @Component({
   selector: 'app-search',
@@ -28,7 +29,8 @@ export class SearchComponent implements OnInit {
   public p: number = 1; // active page in paginator
   redirectModel: RedirectModel;
 
-  constructor(enumService: EnumService, private apiService: ApiService, private fb: FormBuilder) {
+  constructor(enumService: EnumService, private apiService: ApiService, private fb: FormBuilder
+    , private errorShowService: ErrorShowService) {
     this.createForm();
     this.domains = enumService.getEnumDomain();
     this.sourceTypes = enumService.getEnumSourceType();
@@ -71,10 +73,10 @@ export class SearchComponent implements OnInit {
     this.dtp.pageSize = 20;
     this.dtp.redirectModel = new RedirectModel();
     this.dtp.redirectModel.domainId = 1;
-  this.dtp.redirectModel = this.form.value;
+    this.dtp.redirectModel = this.form.value;
     this.loadLessonsNEW(this.dtp);
-  
-    console.log('this. addform.value',this.dtp.redirectModel);
+
+    console.log('this. addform.value', this.dtp.redirectModel);
   }
 
   public loadLessonsNEW(dtp: ApiParmData) {
@@ -82,6 +84,11 @@ export class SearchComponent implements OnInit {
       x => {
         this.result = x;
         console.log('data:', this.result);
+      },
+      error => {
+        console.log("Error", error);
+        this.errorShowService.passError(error.name);
+        return error;
       }
     );
   }

@@ -1,111 +1,116 @@
-<form [formGroup]="form" (ngSubmit)="submit()" #formDir="ngForm">
-  <div class="row">
+<div>
+  <form [formGroup]="form" (ngSubmit)="submit()" #formDir="ngForm">
+    <div class="row">
 
-    <div class="col-sm-3">
-      <input id="redirectId" style="display: none;" class="form-control" formControlName="redirectId"
-        placeholder="redirectId" formControlName="redirectId">
+      <div class="col-sm-3">
+        <input id="redirectId" style="display: none;" class="form-control" formControlName="redirectId"
+          placeholder="redirectId" formControlName="redirectId">
 
-      <div class="form-group">
-        <label for="domain" i18n="@@domain">Domain</label>
-        <select id="domain" class="form-control" formControlName="domainId">
-          <option *ngFor="let idValue of domains" [value]="idValue.id">{{idValue.name}}</option>
-        </select>
+        <div class="form-group">
+          <label for="domain" i18n="@@domain">Domain</label>
+          <select id="domain" class="form-control" formControlName="domainId">
+            <option *ngFor="let idValue of domains" [value]="idValue.id">{{idValue.name}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="sourceType" i18n="@@sourceType">Type de source</label>
+          <select id="sourceType" class="form-control" formControlName="sourceType">
+            <option *ngFor="let idValue of sourceTypes" [value]="idValue.id">{{idValue.name}}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="targetType" i18n="@@targetType">Type de target</label>
+          <select id="targetType" class="form-control" formControlName="targetType">
+            <option *ngFor="let idValue of targetTypes" [value]="idValue.id">{{idValue.name}}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="targetType" i18n="@@includeDeletions">Type de target</label>
+          <input id="source" class="form-control" formControlName="source" type="checkbox">
+        </div>
+
+        <button type="submit" class="btn btn-primary" i18n="@@search">Submit</button>
       </div>
-      <div class="form-group">
-        <label for="sourceType" i18n="@@sourceType">Type de source</label>
-        <select id="sourceType" class="form-control" formControlName="sourceType">
-          <option *ngFor="let idValue of sourceTypes" [value]="idValue.id">{{idValue.name}}</option>
-        </select>
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label for="redirectionType" i18n="@@redirectionType">Type de redirection</label>
+          <select id="redirectionType" class="form-control" formControlName="redirectionType">
+            <option *ngFor="let idValue of redirectionTypes" [value]="idValue.id">{{idValue.name}}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="source" i18n="@@source">Source</label>
+          <input id="source" class="form-control" formControlName="source" value=''>
+        </div>
+
+        <div class="form-group">
+          <label for="target" i18n="@@target">Target</label>
+          <input id="target" class="form-control" formControlName="target">
+        </div>
       </div>
 
-      <div class="form-group">
-        <label for="targetType" i18n="@@targetType">Type de target</label>
-        <select id="targetType" class="form-control" formControlName="targetType">
-          <option *ngFor="let idValue of targetTypes" [value]="idValue.id">{{idValue.name}}</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="targetType" i18n="@@includeDeletions">Type de target</label>
-        <input id="source" class="form-control" formControlName="source" type="checkbox">
-      </div>
-
-      <button type="submit" class="btn btn-primary" i18n="@@search">Submit</button>
+      <p>Form value: {{ form.value | json }}</p>
+      <p>Form status: {{ form.status | json }}</p>
     </div>
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label for="redirectionType" i18n="@@redirectionType">Type de redirection</label>
-        <select id="redirectionType" class="form-control" formControlName="redirectionType">
-          <option *ngFor="let idValue of redirectionTypes" [value]="idValue.id">{{idValue.name}}</option>
-        </select>
-      </div>
 
-      <div class="form-group">
-        <label for="source" i18n="@@source">Source</label>
-        <input id="source" class="form-control" formControlName="source" value=''>
-      </div>
-
-      <div class="form-group">
-        <label for="target"  i18n="@@target">Target</label>
-        <input id="target" class="form-control" formControlName="target">
-      </div>
-    </div>
-
-    <p>Form value: {{ form.value | json }}</p>
-    <p>Form status: {{ form.status | json }}</p>
-  </div>
-
-</form>
-<div class="">
-  <table class="table">
-    <tbody>
-      <tr>
-        <td> redirectId </td>
-        <th i18n="@@source">[Not translated]</th>
-        <th i18n="@@sourceType">[Not translated]</th>
-        <th i18n="@@targetType">[Not translated]</th>
-        <th i18n="@@target">[Not translated]</th>
-        <th i18n="@@redirectionType">Redirection type</th>
-        <th>{{result?.data?.length}}</th>
-      </tr>
-      <tr *ngFor="let item of result?.data | paginate: {  itemsPerPage: dtp?.pageSize,
+  </form>
+  <div class="">
+    <table class="table">
+      <tbody>
+        <tr>
+          <td> redirectId </td>
+          <th i18n="@@source">[Not translated]</th>
+          <th i18n="@@sourceType">[Not translated]</th>
+          <th i18n="@@targetType">[Not translated]</th>
+          <th i18n="@@target">[Not translated]</th>
+          <th i18n="@@redirectionType">Redirection type</th>
+          <th>{{result?.data?.length}}</th>
+        </tr>
+        <tr *ngFor="let item of result?.data | paginate: {  itemsPerPage: dtp?.pageSize,
           currentPage: p,
           totalItems: result?.recordsFiltered }">
-        <td>{{item.redirectId}}</td>
-        <!--style="display:none" <td>{{item.domainId}}</td> -->
-        <td>{{item.sourceTypeString}}</td>
-        <td>{{item.source}}</td>
-        <td>{{item.targetTypeString}}</td>
-        <td>{{item.target}}</td>
-        <td>{{item.redirectionType}}</td>
-      
-        <td>
+          <td>{{item.redirectId}}</td>
+          <!--style="display:none" <td>{{item.domainId}}</td> -->
+          <td>{{item.sourceTypeString}}</td>
+          <td>{{item.source}}</td>
+          <td>{{item.targetTypeString}}</td>
+          <td>{{item.target}}</td>
+          <td>{{item.redirectionType}}</td>
 
-          <div class="btn-group"><a href="/Redirect/Edit/1" class="btn btn-sm btn-info" rel="tooltip"
-              data-animate=" animated tada" data-toggle="tooltip" data-container="body" data-original-title="Modifier"
-              data-placement="top">  <fa-icon icon="pen"></fa-icon>
-            </a>
-            <a data-redirectid="1" class="btn btn-sm btn-danger js-Redirect-delete" rel="tooltip"
-              data-animate="animated tada" data-toggle="tooltip" data-container="body" data-original-title="Supprimer"
-              data-placement="top">
-              <fa-icon icon="trash"></fa-icon>
-            </a>
-            <a data-redirectid="1" class="btn btn-sm btn-warning " data-toggle="modal" data-container="body"
-              data-target="#HistoryModal" rel="tooltip" data-animate="animated tada" data-original-title="Historique"
-              data-placement="top"> <fa-icon icon="history"></fa-icon>
-            </a>
-          </div>
+          <td>
+
+            <div class="btn-group"><a href="/Redirect/Edit/1" class="btn btn-sm btn-info" rel="tooltip"
+                data-animate=" animated tada" data-toggle="tooltip" data-container="body" data-original-title="Modifier"
+                data-placement="top">
+                <fa-icon icon="pen"></fa-icon>
+              </a>
+              <a data-redirectid="1" class="btn btn-sm btn-danger js-Redirect-delete" rel="tooltip"
+                data-animate="animated tada" data-toggle="tooltip" data-container="body" data-original-title="Supprimer"
+                data-placement="top">
+                <fa-icon icon="trash"></fa-icon>
+              </a>
+              <a data-redirectid="1" class="btn btn-sm btn-warning " data-toggle="modal" data-container="body"
+                data-target="#HistoryModal" rel="tooltip" data-animate="animated tada" data-original-title="Historique"
+                data-placement="top">
+                <fa-icon icon="history"></fa-icon>
+              </a>
+            </div>
 
 
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <select #nbItems (change)="selectNbItembyPage($event, nbItems.value)">
-    <option value="10">10</option>
-    <option value="20" selected>20</option>
-    <option value="30">30</option>
-  </select>
-  <pagination-controls (pageChange)="getPage($event)">
-  </pagination-controls>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <select #nbItems (change)="selectNbItembyPage($event, nbItems.value)">
+      <option value="10">10</option>
+      <option value="20" selected>20</option>
+      <option value="30">30</option>
+    </select>
+    <pagination-controls (pageChange)="getPage($event)">
+    </pagination-controls>
+  </div>
+
 </div>
