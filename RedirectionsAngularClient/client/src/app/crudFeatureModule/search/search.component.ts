@@ -8,7 +8,7 @@ import { ApiService } from '../../services/api.service';
 import { RedirectModel } from '../../modelSharedModule/interfaces/redirectModel';
 import { ApiParmData } from '../../modelSharedModule/interfaces/apiParmData';
 import { ApiReturnData } from 'src/app/modelSharedModule/interfaces/apiReturnData';
- 
+import { LogModel } from 'src/app/modelSharedModule/interfaces/logModel';
 import { ErrorShowService } from '../../services/error-show.service';
 
 @Component({
@@ -80,14 +80,20 @@ export class SearchComponent implements OnInit {
   }
 
   public loadLessonsNEW(dtp: ApiParmData) {
+
+    var logData = <LogModel>({});
+
     this.apiService.search(dtp).subscribe(
       x => {
         this.result = x;
+        logData.ok = true;
         console.log('data:', this.result);
       },
       error => {
         console.log("Error", error);
-        this.errorShowService.passError(error.name);
+        logData.ok = false;
+        logData.message = error.name;     
+        this.errorShowService.passError(logData);
         return error;
       }
     );

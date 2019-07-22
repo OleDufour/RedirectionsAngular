@@ -90,7 +90,7 @@ export class AddComponent {
   }
 
   testError   ()   {
-    this.errorShowService.passError('foutje');
+     
 
   }
 

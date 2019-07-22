@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+
+import { LogModel } from 'src/app/modelSharedModule/interfaces/logModel';
  
 @Injectable(
  { providedIn: 'root' }
@@ -7,15 +9,14 @@ import { Subject } from 'rxjs';
 export class ErrorShowService {
 
   // Observable string sources
-  private errorMessageSource = new Subject<string>();
+  private errorMessageSource = new Subject<LogModel>();
 
   // Observable string streams
   errorMessageRaised$ = this.errorMessageSource.asObservable();
 
-  passError(mission: string) {
-    this.errorMessageSource.next(mission);
+  passError(logData: LogModel) {    
+    this.errorMessageSource.next(logData);
   }
-
 
   constructor() {
 
