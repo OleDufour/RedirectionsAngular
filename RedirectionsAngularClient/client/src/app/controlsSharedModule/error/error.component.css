@@ -1,0 +1,14 @@
+:host {
+    display: block;
+  }
+
+   h4{ color: white;}
+
+  .open-close-container {
+   
+    margin-top: 1em;
+    padding: 10px  20px 0px 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+  }
