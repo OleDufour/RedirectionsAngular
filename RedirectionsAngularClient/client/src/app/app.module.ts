@@ -24,16 +24,13 @@ import { NavbarComponent } from './pages/navbar/navbar.component';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
+    BrowserAnimationsModule,   
     ServiceModule,
-    ReactiveFormsModule,
-  
-    HttpClientModule,    
-    
+    ReactiveFormsModule,  
+    HttpClientModule,        
     ControlModule,   
     CrudModule,
-   
+    AppRoutingModule, // After CrudModule !
   ],
   providers: [],
   bootstrap: [AppComponent]

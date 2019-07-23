@@ -79,10 +79,10 @@
           <td>{{item.targetTypeString}}</td>
           <td>{{item.target}}</td>
           <td>{{item.redirectionType}}</td>
-
           <td>
 
-            <div class="btn-group"><a href="/Redirect/Edit/1" class="btn btn-sm btn-info" rel="tooltip"
+            <div class="btn-group">
+            <a [routerLink]="['/add', item.redirectId]" class="btn btn-sm btn-info" rel="tooltip"
                 data-animate=" animated tada" data-toggle="tooltip" data-container="body" data-original-title="Modifier"
                 data-placement="top">
                 <fa-icon icon="pen"></fa-icon>
