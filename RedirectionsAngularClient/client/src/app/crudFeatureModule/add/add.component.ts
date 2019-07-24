@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-//import { AddService } from './add.service';
+import { ActivatedRoute } from '@angular/router';
+//import 'rxjs/add/operator/filter';
+
 import { EnumService } from '../../services/enum.service';
 import { ApiService } from '../../services/api.service';
 import { RedirectModel } from '../../modelSharedModule/interfaces/redirectModel';
@@ -13,7 +15,7 @@ import { ErrorShowService } from '../../services/error-show.service';
   templateUrl: './add.component.html'
 
 })
-export class AddComponent {
+export class AddComponent implements OnInit {
 
   addform: FormGroup;
   public domains: { id: number; name: string }[] = [];
@@ -22,9 +24,12 @@ export class AddComponent {
   public redirectionTypes: { id: number; name: string }[] = [];
   //public submitting: boolean = false;
   public editUpdateResult: ApiReturnInfo;
+  public id : number; // redirectId from query string
 
-  constructor(enumService: EnumService, private apiService: ApiService, private fb: FormBuilder
-    , private errorShowService: ErrorShowService) {
+  constructor(enumService: EnumService,
+    private apiService: ApiService, private fb: FormBuilder
+    , private errorShowService: ErrorShowService
+    , private route: ActivatedRoute) {
     this.createForm();
 
     this.domains = enumService.getEnumDomain();
@@ -32,6 +37,17 @@ export class AddComponent {
     this.targetTypes = enumService.getEnumTargetType();
     this.redirectionTypes = enumService.getRedirectionTypes();
     this.addform.controls['domainId'].setValue(1, { onlySelf: true });
+  }
+
+  ngOnInit() {
+    this.route.queryParams
+  //  .filter(params => params.order)
+    .subscribe(params => {
+      console.log(params); // {order: "popular"}
+
+      this.id = params['id'];
+      alert(this.id); // popular
+    });
   }
 
   createForm() {
@@ -80,7 +96,7 @@ export class AddComponent {
           console.log('3333333333333', this.editUpdateResult.data.redirectId);
           this.addform.controls['redirectId'].setValue(this.editUpdateResult.data.redirectId);
         },
-        error => {        
+        error => {
           console.log("Error", error);
           this.errorShowService.passError(error.name);
           return error;
@@ -89,8 +105,8 @@ export class AddComponent {
     console.log('111111111111111111111111', this.editUpdateResult)
   }
 
-  testError   ()   {
-     
+  testError() {
+
 
   }
 
