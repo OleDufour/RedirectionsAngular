@@ -41,12 +41,18 @@ export class AddComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams
-  //  .filter(params => params.order)
     .subscribe(params => {
-      console.log(params); // {order: "popular"}
-
+      console.log(params);
       this.id = params['id'];
-      alert(this.id); // popular
+      this.addform = this.fb.group({
+        redirectId: [''],
+        domainId: [3],  // pas de validation, mais c'est pour inclure dans le modèle.
+        sourceType: [5],
+        source: ['fff'],
+        targetType: [2],
+        target: ['eee'],
+        redirectionType: [302],
+      });
     });
   }
 
