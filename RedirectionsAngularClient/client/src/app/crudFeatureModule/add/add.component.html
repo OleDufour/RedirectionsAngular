@@ -1,7 +1,12 @@
 <!--The whole content below can be removed with the new code.-->
 <div>
-  
+   
+   
   <h3>
+  
+      <!-- translation: directive (key as content of element) -->
+      <p translate>login.username</p>
+
     <!-- Add Redirection -->
   </h3>
   <form [formGroup]="addform" (ngSubmit)="submit()" #formDir="ngForm">
@@ -68,7 +73,7 @@
     </div>
     <button type="submit" class="btn btn-primary" i18n="@@add">Submit</button>
 
-
+ 
   </form>
   <!-- -->
   <p>Form value: {{ addform.value | json }}</p>

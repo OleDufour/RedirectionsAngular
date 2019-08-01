@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<app-navbar (chosenLanguageHasChanged)="chosenLanguageHasChanged($event)" ></app-navbar>
 <div class="container-fluid">
 <app-error style='height:60px' ></app-error>
 </div>
@@ -12,3 +12,4 @@
     <router-outlet></router-outlet>
   </div>
 </div>
+

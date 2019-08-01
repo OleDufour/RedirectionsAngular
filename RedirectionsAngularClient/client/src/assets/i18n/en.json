@@ -1,0 +1,12 @@
+{
+    "welcomeMessage": "Thanks for joining, {{ firstName }}! It's great to have you!",
+    "login": {
+      "username": "Enter your user name",
+      "password": "Password here"
+    }
+    ,
+    "addedit": {
+      "target": "target",
+      "password": "Password here"
+    }
+  }

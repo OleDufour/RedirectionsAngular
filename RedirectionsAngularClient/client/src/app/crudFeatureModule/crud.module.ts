@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { TranslateModule } from '@ngx-translate/core';
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -23,9 +24,10 @@ const routes: Routes = [
 @NgModule({
   declarations: [AddComponent, SearchComponent, ImportComponent, PublishComponent],
   imports: [
-    CommonModule, ReactiveFormsModule, NgxPaginationModule, FontAwesomeModule, ControlModule, RouterModule.forChild(routes)
+    CommonModule, ReactiveFormsModule, NgxPaginationModule, FontAwesomeModule, ControlModule, RouterModule.forChild(routes), 
+    TranslateModule.forChild({}),
   ]
-  , exports:[RouterModule]
+  , exports:[RouterModule  ]
 })
 export class CrudModule {
 
@@ -36,3 +38,4 @@ export class CrudModule {
 
 
 }
+ 

@@ -10,6 +10,10 @@ import { RedirectModel } from '../../modelSharedModule/interfaces/redirectModel'
 import { ApiReturnInfo } from 'src/app/modelSharedModule/interfaces/apiReturnInfo';
 import { ErrorShowService } from '../../services/error-show.service';
 
+
+import {TranslateService} from '@ngx-translate/core';
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './add.component.html'
@@ -29,7 +33,12 @@ export class AddComponent implements OnInit {
   constructor(enumService: EnumService,
     private apiService: ApiService, private fb: FormBuilder
     , private errorShowService: ErrorShowService
-    , private route: ActivatedRoute) {
+    , private route: ActivatedRoute
+    ,private translate: TranslateService
+    ) {
+
+  
+
     this.createForm();
 
     this.domains = enumService.getEnumDomain();
@@ -37,9 +46,19 @@ export class AddComponent implements OnInit {
     this.targetTypes = enumService.getEnumTargetType();
     this.redirectionTypes = enumService.getRedirectionTypes();
     this.addform.controls['domainId'].setValue(1, { onlySelf: true });
+  
+
+   
   }
 
   ngOnInit() {
+
+    // this.translate.get(['login.username', 'login.password'])
+    // .subscribe(translations => {
+    //   alert( translations['login.username']);
+    // });
+
+
     this.route.queryParams
     .subscribe(params => {
       console.log(params);
