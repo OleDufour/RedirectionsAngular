@@ -1,5 +1,5 @@
 <div>
-   
+
 
   <form [formGroup]="form" (ngSubmit)="submit()" #formDir="ngForm">
     <div class="row">
@@ -9,20 +9,20 @@
           placeholder="redirectId" formControlName="redirectId">
 
         <div class="form-group">
-          <label for="domain" i18n="@@domain">Domain</label>
+          <label for="domain" translate>datalabel.domain</label>
           <select id="domain" class="form-control" formControlName="domainId">
             <option *ngFor="let idValue of domains" [value]="idValue.id">{{idValue.name}}</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="sourceType" i18n="@@sourceType">Type de source</label>
+          <label for="sourceType" translate>datalabel.sourceType</label>
           <select id="sourceType" class="form-control" formControlName="sourceType">
             <option *ngFor="let idValue of sourceTypes" [value]="idValue.id">{{idValue.name}}</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label for="targetType" i18n="@@targetType">Type de target</label>
+          <label for="targetType" translate>datalabel.targetType</label>
           <select id="targetType" class="form-control" formControlName="targetType">
             <option *ngFor="let idValue of targetTypes" [value]="idValue.id">{{idValue.name}}</option>
           </select>
@@ -53,28 +53,29 @@
           <input id="target" class="form-control" formControlName="target">
         </div>
       </div>
-
-      <p>Form value: {{ form.value | json }}</p>
-      <p>Form status: {{ form.status | json }}</p>
     </div>
-
+    <!--       
+      <p>Form value: {{ form.value | json }}</p>
+      <p>Form status: {{ form.status | json }}</p> 
+-->
   </form>
+  
   <div class="">
     <table class="table">
       <tbody>
         <tr>
-          <td> redirectId </td>
-          <th i18n="@@source">[Not translated]</th>
-          <th i18n="@@sourceType">[Not translated]</th>
-          <th i18n="@@targetType">[Not translated]</th>
-          <th i18n="@@target">[Not translated]</th>
-          <th i18n="@@redirectionType">Redirection type</th>
+          <!-- <td> redirectId </td> -->
+          <th translate>datalabel.source</th>
+          <th translate>datalabel.sourceType</th>
+          <th translate>datalabel.targetType</th>
+          <th translate>datalabel.target</th>
+          <th translate>datalabel.redirectionType</th>
           <th>{{result?.data?.length}}</th>
         </tr>
         <tr *ngFor="let item of result?.data | paginate: {  itemsPerPage: dtp?.pageSize,
           currentPage: p,
           totalItems: result?.recordsFiltered }">
-          <td>{{item.redirectId}}</td>
+          <!-- <td>{{item.redirectId}}</td> -->
           <!--style="display:none" <td>{{item.domainId}}</td> -->
           <td>{{item.sourceTypeString}}</td>
           <td>{{item.source}}</td>
@@ -82,7 +83,6 @@
           <td>{{item.target}}</td>
           <td>{{item.redirectionType}}</td>
           <td>
-
             <div class="btn-group">
               <a [routerLink]="['/add']" [queryParams]="{id: 2}" class="btn btn-sm btn-info" rel="tooltip"
                 data-animate=" animated tada" data-toggle="tooltip" data-container="body" data-original-title="Modifier"
@@ -100,8 +100,6 @@
                 <fa-icon icon="history"></fa-icon>
               </a>
             </div>
-
-
           </td>
         </tr>
       </tbody>

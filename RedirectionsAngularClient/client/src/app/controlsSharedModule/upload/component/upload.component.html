@@ -10,7 +10,7 @@
 
   <div class="text-center p-5">
     <i aria-hidden="true" class="fa fa-4x fa-file-excel-o"></i>
-    <h4 style="color:inherit"> Déposez un fichier .csv <br>sur l'écran pour l'importer<br>ou</h4>
+    <h4 style="color:inherit" [innerHTML]="'import.draganddrop' | translate"></h4>
     <button class="btn btn-lg btn-primary"   (click)="fileInput.click()" >Sélectionnez un fichier .csv</button>
 
 

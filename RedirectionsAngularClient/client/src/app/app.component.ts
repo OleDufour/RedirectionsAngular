@@ -8,22 +8,13 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
   title = 'client';
-  constructor(private translate: TranslateService) {
-    alert('constructor')
+  constructor(private translate: TranslateService) {    
     this.translate.addLangs(['en', 'fr'])
     this.translate.setDefaultLang('fr');
   }
 
 
-  chosenLanguageHasChanged(lang: string) {
- 
-  
-  
+  chosenLanguageHasChanged(lang: string) {  
     this.translate.use(lang);
-
   }  
-
-
-
-
 }

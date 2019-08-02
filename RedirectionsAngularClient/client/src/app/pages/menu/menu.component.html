@@ -1,21 +1,13 @@
-
-
-   <p [translate]="'login.username'">ddd</p>
-  
-   <!-- translation: directive (key as content of element) -->
-   <p translate>login.username</p>
-   
-<div class="page-sidebar"> 
-  
+<div class="page-sidebar">  
   <ul class="sub-menu" >
-    <li>
-      <a routerLink="/search" routerLinkActive="active"  i18n="@@search">search</a>
+    <li>       
+      <a routerLink="/search" routerLinkActive="active" translate>menu.search</a>
     </li>
-    <li> <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" i18n="@@add">New</a>
+    <li> <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" translate>menu.add</a>
     </li>
-    <li> <a routerLink="/importer" routerLinkActive="active" i18n="@@import">Importing</a>
+    <li> <a routerLink="/importer" routerLinkActive="active" translate>menu.import</a>
     </li>
-    <li><a routerLink="/publier" routerLinkActive="active" i18n="@@publish">[error]</a>
+    <li><a routerLink="/publier" routerLinkActive="active" translate>menu.publish</a>
     </li>
   </ul>
 </div>

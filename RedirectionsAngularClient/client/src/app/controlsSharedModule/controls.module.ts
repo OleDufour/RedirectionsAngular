@@ -1,16 +1,18 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from "@angular/common";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { TranslateModule } from '@ngx-translate/core';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { DropdownComponent } from './dropdown/dropdown.component';
-import { UploadComponent } from './upload/component/upload.component';
-import { DragDropDirective } from './upload/drag-drop.directive';
-import { ErrorComponent } from './error/error.component';
 
 import { faFileCsv, faPen, faFileExcel } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
+
+
+import { DropdownComponent } from './dropdown/dropdown.component';
+import { UploadComponent } from './upload/component/upload.component';
+import { DragDropDirective } from './upload/drag-drop.directive';
+import { ErrorComponent } from './error/error.component';
 
 
 @NgModule({
@@ -21,6 +23,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
     FontAwesomeModule,
     BsDropdownModule.forRoot()
     , BrowserAnimationsModule
+    , TranslateModule.forChild({})
   ],
   exports: [DropdownComponent, UploadComponent, DragDropDirective, ErrorComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

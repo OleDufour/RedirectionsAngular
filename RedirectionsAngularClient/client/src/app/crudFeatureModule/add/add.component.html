@@ -1,27 +1,17 @@
 <!--The whole content below can be removed with the new code.-->
 <div>
-   
-   
-  <h3>
-  
-      <!-- translation: directive (key as content of element) -->
-      <p translate>login.username</p>
-
-    <!-- Add Redirection -->
-  </h3>
   <form [formGroup]="addform" (ngSubmit)="submit()" #formDir="ngForm">
-
     <input id="redirectId" class="form-control" style="display: none" formControlName="redirectId" placeholder="redirectId"
       formControlName="redirectId">
 
     <div class="form-group">
-      <label for="domain" i18n="@@domain">[translation!]</label>
+      <label for="domain" translate>datalabel.domain</label>
       <select id="domain" class="form-control" formControlName="domainId">
         <option *ngFor="let idValue of domains" [value]="idValue.id">{{idValue.name}}</option>
       </select>
     </div>
     <div class="form-group">
-      <label for="sourceType" i18n="@@sourceType">[translation!]</label>
+      <label for="sourceType" translate>datalabel.sourceType</label>
       <select id="sourceType" class="form-control" formControlName="sourceType">
         <option *ngFor="let idValue of sourceTypes" [value]="idValue.id">{{idValue.name}}</option>
       </select>
@@ -30,7 +20,7 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="source"  i18n="@@source">Source</label>
+      <label for="source"  translate>datalabel.source</label>
       <input id="source" class="form-control" formControlName="source" value=''>
       <div *ngIf="formDir.submitted && addform.controls['source'].errors?.required" class="alert alert-danger">
         La source est obligatoire !!
@@ -40,7 +30,7 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="targetType"  i18n="@@targetType">Type de target</label>
+      <label for="targetType" translate>datalabel.targetType</label>
       <select id="targetType" class="form-control" formControlName="targetType">
         <option *ngFor="let idValue of targetTypes" [value]="idValue.id">{{idValue.name}}</option>
       </select>
@@ -49,14 +39,14 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="target" i18n="@@target">Target</label>
+      <label for="target" translate>datalabel.target</label>
       <input id="target" class="form-control" formControlName="target">
       <div *ngIf="formDir.submitted && addform.controls['target'].errors?.required" class="alert alert-danger">
         Le target est obligatoire !!
       </div>
     </div>
     <div class="form-group">
-      <label for="redirectionType" i18n="@@redirectionType">[translationError]</label>
+      <label for="redirectionType" translate>datalabel.redirectionType</label>
       <select id="redirectionType" class="form-control" formControlName="redirectionType">
         <option *ngFor="let idValue of redirectionTypes" [value]="idValue.id">{{idValue.name}}</option>
       </select>
@@ -71,7 +61,7 @@
     <div class="alert alert-success" role="alert" *ngIf="editUpdateResult?.success && editUpdateResult?.message">
       {{editUpdateResult.message}}
     </div>
-    <button type="submit" class="btn btn-primary" i18n="@@add">Submit</button>
+    <button type="submit" class="btn btn-primary" translate>common.submit</button>
 
  
   </form>
@@ -83,3 +73,4 @@
 </div>
 
 
+Drag and drop
