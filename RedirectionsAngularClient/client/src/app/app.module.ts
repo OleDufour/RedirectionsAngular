@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+//import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -17,6 +17,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './pages/menu/menu.component'; 
 import { NavbarComponent } from './pages/navbar/navbar.component';
+import { HomeComponent } from './pages/home/home.component';
   
  
 
@@ -24,16 +25,16 @@ import { NavbarComponent } from './pages/navbar/navbar.component';
   declarations: [
     AppComponent,
     MenuComponent,
-    NavbarComponent,  
+    NavbarComponent,
+    HomeComponent,  
   ],
-  imports: [
-    BrowserModule,
+  imports: [   
     BrowserAnimationsModule,   
     ServiceModule,
     ReactiveFormsModule,  
     HttpClientModule,
     ControlModule,   
-    CrudModule,
+    
     AppRoutingModule, // After CrudModule !
     
     TranslateModule.forRoot({

@@ -22,7 +22,7 @@ import { ErrorComponent } from './error/error.component';
     CommonModule,
     FontAwesomeModule,
     BsDropdownModule.forRoot()
-    , BrowserAnimationsModule
+    //, BrowserAnimationsModule
     , TranslateModule.forChild({})
   ],
   exports: [DropdownComponent, UploadComponent, DragDropDirective, ErrorComponent],

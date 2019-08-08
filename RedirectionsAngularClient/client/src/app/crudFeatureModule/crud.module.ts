@@ -11,20 +11,17 @@ import { ControlModule } from './../controlsSharedModule/controls.module';
 import { faCoffee, faHistory, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { RouterModule, Routes } from '@angular/router';
 
+import {CrudRoutingModule} from './crud-routing.module';
+
 import { AddComponent } from './add/add.component';
 import { SearchComponent } from './search/search.component';
 import { ImportComponent } from './import/import.component';
 import { PublishComponent } from './publish/publish.component';
 
-const routes: Routes = [
-  { path: 'add', component: AddComponent },
-  { path: 'add/:id', component: AddComponent },
-]
-
 @NgModule({
   declarations: [AddComponent, SearchComponent, ImportComponent, PublishComponent],
   imports: [
-    CommonModule, ReactiveFormsModule, NgxPaginationModule, FontAwesomeModule, ControlModule, RouterModule.forChild(routes), 
+    CommonModule, ReactiveFormsModule, NgxPaginationModule, FontAwesomeModule, ControlModule, CrudRoutingModule, RouterModule, 
     TranslateModule.forChild({}),
   ]
   , exports:[RouterModule  ]
