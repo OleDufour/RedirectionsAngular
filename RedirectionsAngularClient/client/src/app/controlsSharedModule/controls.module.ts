@@ -14,9 +14,12 @@ import { UploadComponent } from './upload/component/upload.component';
 import { DragDropDirective } from './upload/drag-drop.directive';
 import { ErrorComponent } from './error/error.component';
 
+import { TabComponent } from './tabs/tab.component';
+import { TabsComponent } from './tabs/tabs.component';
+
 
 @NgModule({
-  declarations: [DropdownComponent, UploadComponent, DragDropDirective, ErrorComponent
+  declarations: [DropdownComponent, UploadComponent, DragDropDirective, ErrorComponent, TabComponent, TabsComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +28,7 @@ import { ErrorComponent } from './error/error.component';
     //, BrowserAnimationsModule
     , TranslateModule.forChild({})
   ],
-  exports: [DropdownComponent, UploadComponent, DragDropDirective, ErrorComponent],
+  exports: [DropdownComponent, UploadComponent, DragDropDirective, ErrorComponent, TabComponent, TabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: []
