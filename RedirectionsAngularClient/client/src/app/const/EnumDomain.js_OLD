@@ -1,0 +1,37 @@
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+exports.__esModule = true;
+var Enum_1 = require("./Enum");
+var enumDomain;
+(function (enumDomain) {
+    enumDomain[enumDomain["FR_FR"] = 1] = "FR_FR";
+    enumDomain[enumDomain["FR_FR_PRO"] = 2] = "FR_FR_PRO";
+    enumDomain[enumDomain["FR_BE"] = 3] = "FR_BE";
+    enumDomain[enumDomain["NL_BE"] = 4] = "NL_BE";
+    enumDomain[enumDomain["FR_CH"] = 5] = "FR_CH";
+    enumDomain[enumDomain["PT_PT"] = 6] = "PT_PT";
+    enumDomain[enumDomain["ES_ES"] = 7] = "ES_ES";
+})(enumDomain = exports.enumDomain || (exports.enumDomain = {}));
+var EnumDomain = /** @class */ (function (_super) {
+    __extends(EnumDomain, _super);
+    function EnumDomain() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    EnumDomain.prototype.GetArray = function () {
+        return (_super.prototype.SortByNameAndConvertToArray.call(this, enumDomain, false));
+    };
+    return EnumDomain;
+}(Enum_1.Enum));
+exports.EnumDomain = EnumDomain;

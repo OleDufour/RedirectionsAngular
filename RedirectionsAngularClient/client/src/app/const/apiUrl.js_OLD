@@ -1,0 +1,4 @@
+"use strict";
+exports.__esModule = true;
+var apiUrl = "http://localhost:52454/api/values/";
+exports["default"] = apiUrl;
