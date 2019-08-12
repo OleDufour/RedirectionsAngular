@@ -20,14 +20,32 @@ import { TabComponent } from './tab.component';
   selector: 'tabs',
   template: `
     <ul class="nav nav-tabs">
-      <li *ngFor="let tab of tabs" (click)="selectTab(tab)" [class.active]="tab.active">
-        <a href="#">{{tab.title}}</a>
+      <li *ngFor="let tab of tabs" (click)="selectTab(tab)" class="nav-item " >
+        <span class="nav-link "  [class.active]="tab.active">{{tab.title}}   </span>
       </li>
     </ul>
+<div class='tabBody'>
+
     <ng-content></ng-content>
-  `,
+ 
+ <div>
+ 
+    `,
   styles: [
     `
+    span{
+cursor:pointer;
+
+    }
+
+    .tabBody{
+border-left:solid 1px #dee2e6;
+border-bottom:solid 1px #dee2e6;
+border-right:solid 1px #dee2e6;
+
+
+}
+
     .tab-close {
       color: gray;
       text-align: right;
