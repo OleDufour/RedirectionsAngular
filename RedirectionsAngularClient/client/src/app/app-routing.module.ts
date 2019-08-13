@@ -1,11 +1,12 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
+import {PageNotFoundComponent} from './pages/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent }
   , { path: 'crud', loadChildren: () => import(`./crudFeatureModule/crud.module`).then(x => x.CrudModule) }
-  // , { path: 'search', loadChildren: () => import(`./crudFeatureModule/crud.module`).then(x => x.CrudModule) }
+  , { path: '**', component:PageNotFoundComponent }
   // , { path: 'importer', loadChildren: () => import(`./crudFeatureModule/crud.module`).then(x => x.CrudModule) }
   // , { path: 'publier', loadChildren: () => import(`./crudFeatureModule/crud.module`).then(x => x.CrudModule) }
 ];

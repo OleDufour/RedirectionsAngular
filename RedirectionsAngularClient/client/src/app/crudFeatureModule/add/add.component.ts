@@ -57,7 +57,9 @@ export class AddComponent implements OnInit {
     // .subscribe(translations => {
     //   alert( translations['login.username']);
     // });
-
+   
+   
+    //alert( this.translate.instant('datalabel.sourceType'));
 
     this.route.queryParams
     .subscribe(params => {
