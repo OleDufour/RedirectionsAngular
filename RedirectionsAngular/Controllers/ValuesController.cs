@@ -213,8 +213,13 @@ namespace RedirectionsAngular.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+
+        return  Ok (new ResultModel{              
+                Message = $"redirection with id {id} successfully deleted !"
+            });
+
         }
 
         [HttpPost]
@@ -222,6 +227,12 @@ namespace RedirectionsAngular.Controllers
         //   [Route("redirect/import")]
         public ActionResult Import(IFormFile file, int? domainId = null)
         {
+            return Ok(new ResultModel
+            {
+                Message = $"upload for domain id {domainId} successful !"
+            });
+
+
             return Ok("ddd");
             var redirects = new List<RedirectModel>();
 

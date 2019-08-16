@@ -16,7 +16,9 @@ import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './add.component.html'
+  templateUrl: './add.component.html',
+   
+  styleUrls: ['./add.component.css']
 
 })
 export class AddComponent implements OnInit {
@@ -31,7 +33,8 @@ export class AddComponent implements OnInit {
   public id : number; // redirectId from query string
 
   constructor(enumService: EnumService,
-    private apiService: ApiService, private fb: FormBuilder
+    private apiService: ApiService
+    , private fb: FormBuilder
     , private errorShowService: ErrorShowService
     , private route: ActivatedRoute
     ,private translate: TranslateService

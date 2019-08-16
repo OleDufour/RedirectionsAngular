@@ -89,7 +89,7 @@
                 data-placement="top">
                 <fa-icon icon="pen"></fa-icon>
               </a>
-              <a data-redirectid="1" class="btn btn-sm btn-danger js-Redirect-delete" rel="tooltip"
+              <a data-redirectid="1" (click)="showPopup(item.redirectId)"  class="btn btn-sm btn-danger js-Redirect-delete" rel="tooltip"
                 data-animate="animated tada" data-toggle="tooltip" data-container="body" data-original-title="Supprimer"
                 data-placement="top">
                 <fa-icon icon="trash"></fa-icon>

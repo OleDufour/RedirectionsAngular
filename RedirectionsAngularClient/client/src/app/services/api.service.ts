@@ -31,7 +31,19 @@ export class ApiService {
         );
     }
 
+    public delete(redirectId: number): Observable<ApiReturnData<any>> {
+        return this.httpClient.delete<ApiReturnData<any>>(apiUrl + 'Delete/' + redirectId).pipe(
+            map(res => res)
+        );
+    }
 
+    public async delete2(redirectId: number): Promise<string> {
+        console.log('delete2');
+        const result = await this.httpClient.delete(apiUrl + 'Delete/' + redirectId).toPromise().then(res=>{return "ddd"});
+        console.log('result');
+     
+        return result;
+    }
 
 
 

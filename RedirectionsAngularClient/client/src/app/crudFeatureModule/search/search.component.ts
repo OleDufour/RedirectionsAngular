@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
-
 import { FormGroup, FormBuilder } from '@angular/forms';
+
+import Swal from 'sweetalert2';
 
 import { EnumService } from '../../services/enum.service';
 import { ApiService } from '../../services/api.service';
@@ -10,6 +10,8 @@ import { ApiParmData } from '../../modelSharedModule/interfaces/apiParmData';
 import { ApiReturnData } from 'src/app/modelSharedModule/interfaces/apiReturnData';
 import { LogModel } from 'src/app/modelSharedModule/interfaces/logModel';
 import { ErrorShowService } from '../../services/error-show.service';
+
+import apiUrl from '../../modelSharedModule/const/apiUrl'
 
 @Component({
   selector: 'app-search',
@@ -29,7 +31,9 @@ export class SearchComponent implements OnInit {
   public p: number = 1; // active page in paginator
   redirectModel: RedirectModel;
 
-  constructor(enumService: EnumService, private apiService: ApiService, private fb: FormBuilder
+  constructor(enumService: EnumService
+    , private apiService: ApiService
+    , private fb: FormBuilder
     , private errorShowService: ErrorShowService) {
     this.createForm();
     this.domains = enumService.getEnumDomain();
@@ -92,10 +96,79 @@ export class SearchComponent implements OnInit {
       error => {
         console.log("Error", error);
         logData.ok = false;
-        logData.message = error.name;     
+        logData.message = error.name;
         this.errorShowService.passError(logData);
         return error;
       }
     );
   }
+
+  public async delete(redirectId: number) {
+
+    var logData = <LogModel>({});
+
+    // const await this.apiService.delete2(redirectId)
+
+    //   x => {
+    //     this.result = x;
+    //     logData.ok = true;
+    //     console.log('data:', this.result);
+    //   },
+    //   error => {
+    //     console.log("Error", error);
+    //     logData.ok = false;
+    //     logData.message = error.name;
+    //     this.errorShowService.passError(logData);
+    //     return error;
+    //   }
+    // );
+  }
+
+
+
+  showPopup(redirectId) {
+
+    // alert(redirectId);
+    // this.delete(5);
+    var mes;
+
+    Swal.fire({
+      title: 'Are you sure you want to delete this redirect',
+      //  input: 'text',
+      inputAttributes: {
+        autocapitalize: 'off'
+      },
+      showCancelButton: true,
+      cancelButtonText:'Canceler',
+      confirmButtonText: 'Ok',
+      showLoaderOnConfirm: true,
+      preConfirm: async () => {
+        return fetch(apiUrl + 'Delete/' + redirectId, {
+          method: 'delete'
+        })
+          .then(response => {
+            return response.json();
+          });
+      },
+      allowOutsideClick: () => !Swal.isLoading()
+    }).then((result) => {
+      if (result.value) {    
+       
+        Swal.fire({
+          title: `${result.value.message}` 
+        })
+      }
+    }).then(function(text) {
+      console.log('Request successful', text);
+    })
+
+
+
+
+  }
+
+
+
+
+
 }
