@@ -142,13 +142,14 @@ export class SearchComponent implements OnInit {
       cancelButtonText:'Canceler',
       confirmButtonText: 'Ok',
       showLoaderOnConfirm: true,
-      preConfirm: async () => {
-        return fetch(apiUrl + 'Delete/' + redirectId, {
-          method: 'delete'
-        })
-          .then(response => {
-            return response.json();
-          });
+      preConfirm:    () => {
+      return  this.apiService.delete2(redirectId);
+        // return fetch(apiUrl + 'Delete/' + redirectId, {
+        //   method: 'delete'
+        // })
+        //   .then(response => {
+        //     return response.json();
+        //   });
       },
       allowOutsideClick: () => !Swal.isLoading()
     }).then((result) => {
