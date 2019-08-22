@@ -19,6 +19,7 @@ import { MenuComponent } from './pages/menu/menu.component';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { LoginComponent } from './pages/login/login.component';
   
  
 
@@ -28,7 +29,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     MenuComponent,
     NavbarComponent,
     HomeComponent,
-    PageNotFoundComponent,  
+    PageNotFoundComponent,
+    LoginComponent,  
   ],
   imports: [   
     BrowserAnimationsModule,   

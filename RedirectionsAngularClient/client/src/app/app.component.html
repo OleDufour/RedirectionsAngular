@@ -1,15 +1,18 @@
-<app-navbar (chosenLanguageHasChanged)="chosenLanguageHasChanged($event)" ></app-navbar>
-<div class="container-fluid">
-<app-error style='height:60px' ></app-error>
-</div>
-<div class="row bodySection">
-  <div id="menuContainer" class="col-sm-2">
-    <app-menu></app-menu>
+<ng-container *ngIf="isLoggedIn; else login">
+  <app-navbar (chosenLanguageHasChanged)="chosenLanguageHasChanged($event)"></app-navbar>
+  <div class="container-fluid">
+    <app-error style='height:60px'></app-error>
   </div>
-  <div class="row col-sm-1"></div>
-  <div class="row col-sm-7">
-       
-    <router-outlet></router-outlet>
+  <div class="row bodySection">
+    <div id="menuContainer" class="col-sm-2">
+      <app-menu></app-menu>
+    </div>
+    <div class="row col-sm-1"></div>
+    <div class="row col-sm-7">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-</div>
-
+</ng-container>
+<ng-template #login>
+  <login></login>
+</ng-template>
