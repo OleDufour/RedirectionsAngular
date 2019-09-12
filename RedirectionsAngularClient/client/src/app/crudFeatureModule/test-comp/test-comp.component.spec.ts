@@ -1,21 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UploadComponent } from './upload.component';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { TestCompComponent } from './test-comp.component';
 
-describe('UploadComponent', () => {
-  let component: UploadComponent;
-  let fixture: ComponentFixture<UploadComponent>;
+describe('TestCompComponent', () => {
+  let component: TestCompComponent;
+  let fixture: ComponentFixture<TestCompComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UploadComponent ,CUSTOM_ELEMENTS_SCHEMA]
+      declarations: [ TestCompComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UploadComponent);
+    fixture = TestBed.createComponent(TestCompComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

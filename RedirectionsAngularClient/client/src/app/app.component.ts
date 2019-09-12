@@ -18,7 +18,7 @@ export class AppComponent {
     //this.  isLoggedIn=_loginService.isLoggedIn;
 
     _loginService.loginStatusRaised$.subscribe(err => {
-      alert(_loginService.isLoggedIn);
+      alert('islogged in: '+_loginService.isLoggedIn);
       this.isLoggedIn = _loginService.isLoggedIn;
 
       //alert(this.errorMessage)

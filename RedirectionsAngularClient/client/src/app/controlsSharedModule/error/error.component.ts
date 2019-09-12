@@ -55,7 +55,7 @@ export class ErrorComponent implements OnInit, OnDestroy {
       console.log('err.message', err.message);
       this.errorMessage = err.message + new Date().getMilliseconds();
       this.isOpen = this.isOpen ? false : true;
-      //alert(this.errorMessage)
+      //alert(this.errorMessage)   
     });
   }
 

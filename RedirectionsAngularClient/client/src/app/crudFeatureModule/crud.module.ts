@@ -16,9 +16,10 @@ import { AddComponent } from './add/add.component';
 import { SearchComponent } from './search/search.component';
 import { ImportComponent } from './import/import.component';
 import { PublishComponent } from './publish/publish.component';
+import { TestCompComponent } from './test-comp/test-comp.component';
 
 @NgModule({
-  declarations: [AddComponent, SearchComponent, ImportComponent, PublishComponent],
+  declarations: [AddComponent, SearchComponent, ImportComponent, PublishComponent, TestCompComponent],
   imports: [
     CommonModule, ReactiveFormsModule, NgxPaginationModule, FontAwesomeModule, ControlModule, CrudRoutingModule, RouterModule,
     TranslateModule.forChild({}),

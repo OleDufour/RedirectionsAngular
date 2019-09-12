@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ImportComponent } from './import.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('ImportComponent', () => {
   let component: ImportComponent;
@@ -8,6 +9,7 @@ describe('ImportComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
       declarations: [ ImportComponent ]
     })
     .compileComponents();
@@ -19,7 +21,7 @@ describe('ImportComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should creatte', () => {
     expect(component).toBeTruthy();
   });
 });

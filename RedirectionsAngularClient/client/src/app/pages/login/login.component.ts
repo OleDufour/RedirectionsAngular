@@ -12,8 +12,12 @@ export class LoginComponent implements OnInit {
 
   login() {
     var result = this._loginService.login("ole", "123");
+
+    alert (result)
     if (result)
       this._loginService.passLoggedIn(true);
+
+
   }
 
   ngOnInit() {
