@@ -25,10 +25,10 @@ namespace RedirectionsAngular.Model
         //public List<ColumnParameters> Columns { get; set; }
         //public List<OrderParameters> Order { get; set; }
 
-        ///// <summary>
+        ///// <summary>    
         ///// If true we add deleted elements.
         ///// </summary>
-        //public bool IncludeDeletions { get; set; }
+        //public bool IncludtttttteDeletions { get; set; }
     }
 
     public class ColumnParameters
