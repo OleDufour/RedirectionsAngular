@@ -1,5 +1,5 @@
 export class ApiReturnData<T> {
-    //       Draw : number;   
+    //       Draw : jjjjnumber;   
     recordsTotal: number;
     recordsFiltered: number;
     data: T[]
