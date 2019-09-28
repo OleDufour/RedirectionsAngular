@@ -1,18 +1,20 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {AddComponent} from './add/add.component'
-import {SearchComponent} from './search/search.component';
-import { PublishComponent } from './publish/publish.component';
+
+import { HomeComponent } from './pages/home/home.component';
+import {PageNotFoundComponent} from './pages/page-not-found/page-not-found.component';
+import {AuthGardService} from './services/auth-gard.service';
 
 const routes: Routes = [
-  {path:'', component: SearchComponent},
-  {path:'add', component: AddComponent},
-  {path:'importer', component: PublishComponent}
-  ,  {path:'publier', component: PublishComponent}
+  { path: '', component: HomeComponent }
+  , { path: 'crud', loadChildren: () => import(`./crudFeatureModule/crud.module`).then(x => x.CrudModule) ,  canActivate:[AuthGardService]}
+  , { path: '**', component:PageNotFoundComponent }
+  // , { path: 'importer', loadChildren: () => import(`./crudFeatureModule/crud.module`).then(x => x.CrudModule) }
+  // , { path: 'publier', loadChildren: () => import(`./crudFeatureModule/crud.module`).then(x => x.CrudModule) }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { enableTracing: false })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

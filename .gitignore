@@ -5,3 +5,4 @@
 /RedirectionsAngular/bin/Debug/net461
 /.vs/RedirectionsAngular/v15
 /RedirectionsAngular/obj
+*.js

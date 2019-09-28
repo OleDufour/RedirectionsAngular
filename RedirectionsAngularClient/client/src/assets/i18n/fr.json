@@ -1,0 +1,29 @@
+{
+  "welcomeMessage": "Thanks for joining, {{ firstName }}! It's great to have you!",
+  "login": {
+    "username": "Enter your user name",
+    "password": "Password here"
+  },
+  "datalabel": {
+    "target": "Cible",  
+    "domain": "Domaine",
+    "sourceType": "Type de source",
+    "source": "Source",
+    "targetType": "Type de cible",
+    "redirectionType": "Type de redirection",
+    "includeDeletions": "Inclure suppressions"
+  },
+  "menu": {
+    "search": "Recherche",
+    "add": "Ajout",
+    "import": "Importer",
+    "publish": "Publier"
+  },
+  "common": {
+    "submit": "Valider"
+  },
+  "import":{
+    "draganddrop":"Déposez un fichier .csv <br>sur l'écran pour l'importer"
+  }
+
+}

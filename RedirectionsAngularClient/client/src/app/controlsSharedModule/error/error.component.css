@@ -1,0 +1,15 @@
+:host {
+    display: block;
+  }
+
+   h4{ color: white;
+  margin:0,
+
+  }
+
+  .open-close-container {
+    padding: 5px 5px 5px 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+  }

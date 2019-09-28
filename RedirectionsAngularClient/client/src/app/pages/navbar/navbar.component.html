@@ -1,0 +1,16 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-link"
+        [ngStyle]="(storedLang==null || storedLang=='' || storedLang=='fr') && {'color': 'black', 'font-weight': 'bold'}"
+        (click)="changeLang('fr')">
+        <span>Français</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [ngStyle]="storedLang=='en' && {'color': 'black', 'font-weight': 'bold'}"
+        (click)="changeLang('en')">English</a>
+    </li>
+
+  </ul>
+</nav>

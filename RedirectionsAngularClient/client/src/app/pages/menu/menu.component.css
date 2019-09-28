@@ -1,0 +1,24 @@
+.page-sidebar { 
+ 
+}
+
+
+ul, menu, dir {
+  font-size: 19px;
+    display: block;
+     list-style-type: none;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
+
+li {
+  font-weight: 17px;
+}
+
+.active{
+  color:blue;
+  font-weight: bold;
+}

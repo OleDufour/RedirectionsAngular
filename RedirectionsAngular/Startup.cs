@@ -25,6 +25,21 @@ namespace RedirectionsAngular
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowMyOrigin",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials()
+                    );
+            });
+
+            services.AddAntiforgery(options =>
+            {
+                options.HeaderName = "X-XSRF-TOKEN";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,8 +49,9 @@ namespace RedirectionsAngular
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors("AllowMyOrigin");
+            app.UseMvc();          
 
-            app.UseMvc();
         }
     }
 }
