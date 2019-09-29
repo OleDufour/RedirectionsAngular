@@ -14,5 +14,9 @@
     font-size: 20px;
   }
 
+<<<<<<< HEAD
+/* 
+  ja maar dit is ook gewijzigd in masterrrrrrr!!! */
+=======
   /* dit is gedaan in develop 2 */
-  /* ja maar dit is ook gewijzigd in masterrrrrrr!!! */
+>>>>>>> origin/develop
